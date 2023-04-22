@@ -1,0 +1,172 @@
+.App {
+	max-width: 1200px;
+	margin: 0 auto;
+	min-height: 100vh;
+	text-align: center;
+	background-color: #474747;
+}
+
+.App-logo {
+	height: 10vmin;
+	pointer-events: none;
+}
+
+.App-header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2em 0;
+}
+
+h1,
+h2,
+h3 {
+	color: #ffbb00;
+}
+
+ul {
+	list-style-type: none;
+	display: flex;
+	justify-content: space-around;
+	padding: 1em;
+	background: #a60202;
+}
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+article {
+	margin: 2em 0;
+	border: 2px solid #a60202;
+	border-radius: 1em;
+	min-width: 40vw;
+}
+
+section {
+	line-height: 3em;
+	background: rgb(180, 179, 179);
+	margin: 2em 1em;
+	cursor: pointer;
+	border-radius: 0.5em;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.create-quiz {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
+}
+
+.create-form {
+	padding: 2em;
+	margin: 2em;
+	border: 2px solid #a60202;
+	border-radius: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.edit-form {
+	display: flex;
+	align-items: center;
+}
+
+label {
+	color: #ffbb00;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.form-control input {
+	line-height: 2.5em;
+	font-size: 1em;
+	border-radius: 0.5em;
+}
+
+.create-btn {
+	height: 2.5em;
+	margin: 2em;
+	border: none;
+	border-radius: 0.5em;
+	font-size: 1em;
+	cursor: pointer;
+	background: #ffbb00;
+	font-weight: bold;
+}
+
+.question-btn {
+	width: 18em;
+	font-size: 1em;
+	height: 2.5em;
+	background-color: rgb(180, 179, 179);
+	border-radius: 0.5em;
+	font-weight: bold;
+	margin: 1em;
+	border: none;
+	cursor: pointer;
+}
+
+.edit-heading {
+	margin-top: 1em;
+}
+
+.questions-selection {
+	width: 100vw;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 1em;
+	background-color: #474747;
+}
+
+.questions-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	color: #ffbb00;
+	text-align: left;
+	margin: 0 1em;
+}
+
+.question-answer {
+	margin: 0.5em 0;
+	border-bottom: 2px solid #a60202;
+	padding-bottom: 0.3em;
+}
+
+.p-question::before {
+	content: 'Q: ';
+}
+
+.p-answer::before {
+	content: 'A: ';
+}
+
+li label {
+	font-weight: 400;
+}
+
+@media screen and (max-width: 900px) {
+	article {
+		min-width: 80vw;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: #ffbb00;
+	font-size: large;
+	font-weight: bold;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	right: calc(50% - 7em);
+	color: #ffbb00;
+	margin: 1em;
+}

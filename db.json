@@ -1,0 +1,197 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "quizzes": [
+    {
+      "id": 9,
+      "name": "kkkk",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Who was the English mathematician and writer widely considered as the worldq's first computer programmer for her work on Charles Babbage's proposed mechanical general-purpose computer, the Analytical Engine?",
+          "answer": "Ada Lovelace"
+        },
+        {
+          "id": 2,
+          "question": "Test Question 2",
+          "answer": "Test Answer 2"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "testni quz",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Who was the English mathematician and writer widely considered as the worldq's first computer programmer for her work on Charles Babbage's proposed mechanical general-purpose computer, the Analytical Engine?",
+          "answer": "Ada Lovelace"
+        },
+        {
+          "id": 4,
+          "question": "your last name",
+          "answer": "adilovic"
+        },
+        {
+          "id": 5,
+          "question": "your town",
+          "answer": "bihac"
+        },
+        {
+          "id": 2,
+          "question": "Test Question 2",
+          "answer": "Test Answer 2"
+        },
+        {
+          "id": 3,
+          "question": "your name",
+          "answer": "aki"
+        },
+        {
+          "id": 6,
+          "question": "boby",
+          "answer": "boy"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "starac",
+      "questions": [
+        {
+          "id": 7,
+          "question": "starac question 1",
+          "answer": "starac answer 1"
+        },
+        {
+          "id": 8,
+          "question": "starac question 2",
+          "answer": "starac answer 2"
+        },
+        {
+          "id": 1,
+          "question": "Who was the English mathematician and writer widely considered as the worldq's first computer programmer for her work on Charles Babbage's proposed mechanical general-purpose computer, the Analytical Engine?",
+          "answer": "Ada Lovelace"
+        },
+        {
+          "id": 2,
+          "question": "Test Question 2",
+          "answer": "Test Answer 2"
+        },
+        {
+          "id": 5,
+          "question": "your town",
+          "answer": "bihac"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "fdsfds",
+      "questions": []
+    },
+    {
+      "id": 13,
+      "name": "hello",
+      "questions": []
+    },
+    {
+      "id": 14,
+      "name": "vvv",
+      "questions": []
+    },
+    {
+      "id": 15,
+      "name": "ggg",
+      "questions": []
+    },
+    {
+      "id": 16,
+      "name": "fdgdgf",
+      "questions": []
+    },
+    {
+      "id": 17,
+      "name": "fsdfsd",
+      "questions": []
+    },
+    {
+      "id": 18,
+      "name": "gfgd",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Who was the English mathematician and writer widely considered as the worldq's first computer programmer for her work on Charles Babbage's proposed mechanical general-purpose computer, the Analytical Engine?",
+          "answer": "Ada Lovelace"
+        },
+        {
+          "id": 2,
+          "question": "Test Question 2",
+          "answer": "Test Answer 2"
+        },
+        {
+          "id": 3,
+          "question": "your name",
+          "answer": "aki"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who was the English mathematician and writer widely considered as the worldq's first computer programmer for her work on Charles Babbage's proposed mechanical general-purpose computer, the Analytical Engine?",
+      "answer": "Ada Lovelace"
+    },
+    {
+      "id": 2,
+      "question": "Test Question 2",
+      "answer": "Test Answer 2"
+    },
+    {
+      "id": 3,
+      "question": "your name",
+      "answer": "aki"
+    },
+    {
+      "id": 4,
+      "question": "your last name",
+      "answer": "adilovic"
+    },
+    {
+      "id": 5,
+      "question": "your town",
+      "answer": "bihac"
+    },
+    {
+      "id": 6,
+      "question": "boby",
+      "answer": "boy"
+    },
+    {
+      "id": 7,
+      "question": "starac question 1",
+      "answer": "starac answer 1"
+    },
+    {
+      "id": 8,
+      "question": "starac question 2",
+      "answer": "starac answer 2"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
