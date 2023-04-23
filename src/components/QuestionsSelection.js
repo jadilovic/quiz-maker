@@ -33,7 +33,8 @@ const QuestionsSelection = ({
 
 	return (
 		<>
-			<h2>Questions for selection</h2>
+			<br />
+			<h3>Questions for selection</h3>
 			<ul className="questions-selection">
 				{serverQuestions.map((question) => (
 					<li key={question.id}>

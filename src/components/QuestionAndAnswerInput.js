@@ -54,7 +54,7 @@ const QuestionAndAnswerInput = ({
 	};
 
 	return (
-		<div>
+		<div className="q-a-input">
 			<h2>Question and Answer Input</h2>
 			<label htmlFor="question">Question:</label>
 			<br />
@@ -63,9 +63,7 @@ const QuestionAndAnswerInput = ({
 				value={question}
 				onChange={handleQuestionChange}
 			/>
-			<br />
 			<label htmlFor="answer">Answer:</label>
-			<br />
 			<textarea id="answer" value={answer} onChange={handleAnswerChange} />
 			<button onClick={handleCreateQuestionAndAnswer}>Create Q and A</button>
 			<button onClick={() => setShowQuestionAndAnswerInput(false)}>

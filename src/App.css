@@ -22,6 +22,7 @@ h1,
 h2,
 h3 {
 	color: #ffbb00;
+	text-align: center;
 }
 
 ul {
@@ -34,7 +35,6 @@ ul {
 main {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 
 article {
@@ -74,6 +74,7 @@ section {
 .edit-form {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 label {
@@ -116,15 +117,31 @@ label {
 }
 
 .questions-selection {
-	width: 100vw;
+	display: inline-block;
 	flex-direction: column;
 	align-items: flex-start;
 	padding: 1em;
 	background-color: #474747;
 }
 
-.questions-container {
+.questions-selection li {
+	text-align: start;
+	border-bottom: 2px solid #a60202;
+	padding-bottom: 0.5em;
+	margin-bottom: 1em;
+}
+
+.questions-selection label {
 	display: flex;
+	font-size: 1em;
+}
+
+.questions-selection input {
+	margin-right: 1em;
+}
+
+.questions-container {
+	display: inline-block;
 	flex-direction: column;
 	align-items: flex-start;
 	color: #ffbb00;
@@ -132,7 +149,21 @@ label {
 	margin: 0 1em;
 }
 
+.remove-button {
+	border: none;
+	font-size: 1em;
+	padding: 0.5em;
+	border-radius: 0.5em;
+	font-weight: bold;
+	color: #ffbb00;
+	background-color: #a60202;
+	cursor: pointer;
+}
+
 .question-answer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	margin: 0.5em 0;
 	border-bottom: 2px solid #a60202;
 	padding-bottom: 0.3em;
@@ -148,6 +179,11 @@ label {
 
 li label {
 	font-weight: 400;
+}
+
+.q-a-input {
+	width: 100%;
+	padding: 1em;
 }
 
 @media screen and (max-width: 900px) {

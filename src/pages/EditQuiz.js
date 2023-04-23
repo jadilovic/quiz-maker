@@ -74,7 +74,7 @@ const EditQuiz = () => {
 				actionName="Edit Quiz Name"
 				formName="edit-form"
 			/>
-			<QuizQuestions quiz={quiz} />
+			<QuizQuestions quiz={quiz} updateQuizInDatabase={updateQuizInDatabase} />
 			{!showQuestionAndAnswerInput && !showQuestionsSelection ? (
 				<div>
 					<button
