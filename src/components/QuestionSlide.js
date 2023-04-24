@@ -8,13 +8,14 @@ const QuestionSlide = ({ question }) => {
 	}, [question.question]);
 
 	return (
-		<>
-			<h3>{question.question}</h3>
-			<button onClick={() => setShowAnswer(!showAnswer)}>{`${
-				showAnswer ? 'Hide Answer' : 'Show Answer'
-			}`}</button>
-			{showAnswer ? <p>{question.answer}</p> : null}
-		</>
+		<div className="question-slide">
+			<p className="question-text">{question.question}</p>
+			<button
+				className="create-btn"
+				onClick={() => setShowAnswer(!showAnswer)}
+			>{`${showAnswer ? 'Hide Answer' : 'Show Answer'}`}</button>
+			{showAnswer ? <p className="answer-text">{question.answer}</p> : null}
+		</div>
 	);
 };
 export default QuestionSlide;

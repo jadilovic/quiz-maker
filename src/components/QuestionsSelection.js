@@ -50,8 +50,17 @@ const QuestionsSelection = ({
 					</li>
 				))}
 			</ul>
-			<button onClick={handleSelectedQuestions}>Add selected questions</button>
-			<button onClick={() => setShowQuestionsSelection(false)}>Cancel</button>
+			<div className="q-a-input-btns">
+				<button className="create-btn" onClick={handleSelectedQuestions}>
+					Add selected questions
+				</button>
+				<button
+					className="question-btn"
+					onClick={() => setShowQuestionsSelection(false)}
+				>
+					Cancel
+				</button>
+			</div>
 		</>
 	);
 };

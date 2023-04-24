@@ -46,19 +46,28 @@ const Quiz = () => {
 	if (Object.keys(quiz).length < 1) return <h1>Loading...</h1>;
 	return (
 		<main>
-			<h1>Quiz - {quiz.name}</h1>
+			<h1 style={{ margin: '1em 0' }}>Solving Quiz: {quiz.name}</h1>
 			{quiz.questions.length < 1 ? (
-				<div>
+				<div className>
 					<h2>No questions added to the quiz</h2>
-					<button onClick={() => navigate(`/edit-quiz/${quiz.id}`)}>
+					<button
+						className="question-btn"
+						onClick={() => navigate(`/edit-quiz/${quiz.id}`)}
+					>
 						Add Questions
 					</button>
 				</div>
 			) : (
-				<div {...handlers}>
+				<div style={{ padding: '1em' }} {...handlers}>
 					<QuestionSlide question={quiz.questions[currentSlide]} />
-					<button onClick={previousSlide}>Previous</button>
-					<button onClick={nextSlide}>Next</button>
+					<div className="slides-navigation">
+						<button className="question-btn" onClick={previousSlide}>
+							Previous
+						</button>
+						<button className="question-btn" onClick={nextSlide}>
+							Next
+						</button>
+					</div>
 				</div>
 			)}
 		</main>

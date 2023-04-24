@@ -55,20 +55,34 @@ const QuestionAndAnswerInput = ({
 
 	return (
 		<div className="q-a-input">
-			<h2>Question and Answer Input</h2>
+			<h3>Question and Answer Input</h3>
 			<label htmlFor="question">Question:</label>
-			<br />
 			<textarea
+				placeholder="Enter question"
 				id="question"
 				value={question}
 				onChange={handleQuestionChange}
 			/>
+			<br />
 			<label htmlFor="answer">Answer:</label>
-			<textarea id="answer" value={answer} onChange={handleAnswerChange} />
-			<button onClick={handleCreateQuestionAndAnswer}>Create Q and A</button>
-			<button onClick={() => setShowQuestionAndAnswerInput(false)}>
-				Cancel
-			</button>
+			<textarea
+				placeholder="Enter answer"
+				id="answer"
+				value={answer}
+				onChange={handleAnswerChange}
+			/>
+			<br />
+			<div className="q-a-input-btns">
+				<button className="create-btn" onClick={handleCreateQuestionAndAnswer}>
+					Create Q and A
+				</button>
+				<button
+					className="question-btn"
+					onClick={() => setShowQuestionAndAnswerInput(false)}
+				>
+					Cancel
+				</button>
+			</div>
 		</div>
 	);
 };

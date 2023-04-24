@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useQuizzes from '../utils/useQuizzes';
 import useQuestions from '../utils/useQuestions';
@@ -18,6 +18,11 @@ const EditQuiz = () => {
 	const [showQuestionAndAnswerInput, setShowQuestionAndAnswerInput] =
 		useState(false);
 	const [showQuestionsSelection, setShowQuestionsSelection] = useState(false);
+	const questionsEndRef = useRef(null);
+
+	const scrollToBottom = () => {
+		questionsEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+	};
 
 	const getQuestionsFromServer = async () => {
 		const questionsFromServer = await databaseQuestions.getQuestions();
@@ -52,6 +57,10 @@ const EditQuiz = () => {
 	useEffect(() => {
 		getQuestionsFromServer();
 	}, [quiz]);
+
+	useEffect(() => {
+		scrollToBottom();
+	}, [showQuestionAndAnswerInput, showQuestionsSelection]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -106,6 +115,7 @@ const EditQuiz = () => {
 					setShowQuestionsSelection={setShowQuestionsSelection}
 				/>
 			) : null}
+			<div ref={questionsEndRef} />
 		</main>
 	);
 };

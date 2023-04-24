@@ -1,10 +1,25 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import RemoveModal from './RemoveModal';
+import Overlay from './Overlay';
+
 const QuizQuestions = ({ quiz, updateQuizInDatabase }) => {
-	const handleRemove = (questionId) => {
+	const navigate = useNavigate();
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [questionId, setQuestionId] = useState(null);
+
+	const handleConfirmedRemove = async () => {
 		const updatedQuestions = quiz.questions.filter(
 			(question) => question.id !== questionId
 		);
 		quiz.questions = updatedQuestions;
 		updateQuizInDatabase(quiz);
+		setIsModalOpen(false);
+	};
+
+	const handleRemove = (questionId) => {
+		setQuestionId(questionId);
+		setIsModalOpen(true);
 	};
 
 	if (quiz.questions.length < 1) return <h3>No questions added to the quiz</h3>;
@@ -27,6 +42,19 @@ const QuizQuestions = ({ quiz, updateQuizInDatabase }) => {
 					</div>
 				);
 			})}
+			<button
+				onClick={() => navigate(`/quizzes/${quiz.id}`)}
+				className="create-btn"
+				style={{ margin: 0, minWidth: '18em' }}
+			>
+				Start Quiz
+			</button>
+			<RemoveModal
+				isModalOpen={isModalOpen}
+				setIsModalOpen={setIsModalOpen}
+				handleConfirmedRemove={handleConfirmedRemove}
+			/>
+			<Overlay isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 		</div>
 	);
 };
