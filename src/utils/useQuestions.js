@@ -1,7 +1,9 @@
 const useQuestions = () => {
 	const getQuestions = async () => {
 		try {
-			const res = await fetch('http://localhost:5000/questions');
+			const res = await fetch(
+				'https://quiz-server-vlwu.onrender.com/questions'
+			);
 			const data = await res.json();
 			return data;
 		} catch (error) {
@@ -11,13 +13,16 @@ const useQuestions = () => {
 
 	const createQuestion = async (question) => {
 		try {
-			const res = await fetch('http://localhost:5000/questions', {
-				method: 'POST',
-				headers: {
-					'Content-type': 'application/json',
-				},
-				body: JSON.stringify(question),
-			});
+			const res = await fetch(
+				'https://quiz-server-vlwu.onrender.com/questions',
+				{
+					method: 'POST',
+					headers: {
+						'Content-type': 'application/json',
+					},
+					body: JSON.stringify(question),
+				}
+			);
 			const data = await res.json();
 			return data;
 		} catch (error) {

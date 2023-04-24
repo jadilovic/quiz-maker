@@ -48,7 +48,10 @@ const Quizzes = () => {
 		navigate(`/quizzes/${quizId}`);
 	};
 
-	if (quizzes.length < 1) return <div>No quizzes have been created yet!</div>;
+	if (quizzes.length < 1)
+		return (
+			<h2 style={{ margin: '2em 0' }}>No quizzes have been created yet!</h2>
+		);
 
 	console.log(quizzes);
 

@@ -28,6 +28,7 @@ const CreateQuiz = () => {
 
 	const addNewQuizToDatabase = async (quiz) => {
 		const addedQuiz = await database.createQuiz(quiz);
+		console.log(addedQuiz);
 		if (addedQuiz) navigate(`/edit-quiz/${addedQuiz.id}`);
 	};
 

@@ -74,7 +74,7 @@ const EditQuiz = () => {
 
 	if (Object.keys(quiz).length < 1) return <h1>Loading...</h1>;
 	return (
-		<main>
+		<main style={{ paddingBottom: '4em' }}>
 			<h1 className="edit-heading">Edit Quiz - {quiz.name}</h1>
 			<QuizNameInput
 				quizName={editedQuizName}

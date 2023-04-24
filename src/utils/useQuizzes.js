@@ -1,7 +1,7 @@
 const useQuizzes = () => {
 	const getQuizzes = async () => {
 		try {
-			const res = await fetch('http://localhost:5000/quizzes');
+			const res = await fetch('https://quiz-server-vlwu.onrender.com/quizzes');
 			const data = await res.json();
 			return data;
 		} catch (error) {
@@ -11,7 +11,9 @@ const useQuizzes = () => {
 
 	const getQuiz = async (quizId) => {
 		try {
-			const res = await fetch(`http://localhost:5000/quizzes/${quizId}`);
+			const res = await fetch(
+				`https://quiz-server-vlwu.onrender.com/quizzes/${quizId}`
+			);
 			const data = await res.json();
 			return data;
 		} catch (error) {
@@ -21,7 +23,7 @@ const useQuizzes = () => {
 
 	const createQuiz = async (quiz) => {
 		try {
-			const res = await fetch('http://localhost:5000/quizzes', {
+			const res = await fetch('https://quiz-server-vlwu.onrender.com/quizzes', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -37,7 +39,7 @@ const useQuizzes = () => {
 
 	const updateQuiz = async (quizToUpdate) => {
 		const res = await fetch(
-			`http://localhost:5000/quizzes/${quizToUpdate.id}`,
+			`https://quiz-server-vlwu.onrender.com/quizzes/${quizToUpdate.id}`,
 			{
 				method: 'PUT',
 				headers: {
@@ -53,9 +55,12 @@ const useQuizzes = () => {
 
 	const deleteQuiz = async (id) => {
 		try {
-			const res = await fetch(`http://localhost:5000/quizzes/${id}`, {
-				method: 'DELETE',
-			});
+			const res = await fetch(
+				`https://quiz-server-vlwu.onrender.com/quizzes/${id}`,
+				{
+					method: 'DELETE',
+				}
+			);
 			return res.status === 200;
 		} catch (error) {
 			console.log(error.message);
