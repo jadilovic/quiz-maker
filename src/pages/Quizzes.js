@@ -14,7 +14,7 @@ const Quizzes = () => {
 	useEffect(() => {
 		getQuizzesFromServer();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [quizzes]);
+	}, []);
 
 	const getQuizzesFromServer = async () => {
 		const quizzesFromServer = await database.getQuizzes();
@@ -49,6 +49,8 @@ const Quizzes = () => {
 	};
 
 	if (quizzes.length < 1) return <div>No quizzes have been created yet!</div>;
+
+	console.log(quizzes);
 
 	return (
 		<main className="quizzes-container">
