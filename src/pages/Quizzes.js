@@ -11,6 +11,7 @@ const Quizzes = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [quizId, setQuizId] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -20,6 +21,10 @@ const Quizzes = () => {
 
 	const getQuizzesFromServer = async () => {
 		const quizzesFromServer = await database.getQuizzes();
+		if (quizzesFromServer.error) {
+			setError(`Server error: ${quizzesFromServer.error}`);
+			return;
+		}
 		setQuizzes(quizzesFromServer);
 		setIsLoading(false);
 	};
@@ -27,7 +32,6 @@ const Quizzes = () => {
 	const handleEdit = (e, id) => {
 		e.stopPropagation();
 		navigate(`/edit-quiz/${id}`);
-		console.log(`Edit button clicked for id ${id}`);
 	};
 
 	const handleConfirmedDelete = async () => {
@@ -40,7 +44,6 @@ const Quizzes = () => {
 			alert('Error Deleting This Quiz');
 		}
 		setIsLoading(false);
-		console.log(`Delete button clicked for id ${quizId}`);
 	};
 
 	const handleDelete = (e, id) => {
@@ -53,12 +56,14 @@ const Quizzes = () => {
 		navigate(`/quizzes/${quizId}`);
 	};
 
+	if (error) return <h2 className="notification">{error}</h2>;
 	if (isLoading) return <h2 className="notification">Loading...</h2>;
 
 	if (quizzes.length < 1)
 		return <h2 className="notification">No quizzes have been created yet!</h2>;
 
 	console.log(quizzes);
+	console.log(error);
 
 	return (
 		<main>

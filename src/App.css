@@ -18,6 +18,65 @@
 	padding: 2em 0;
 }
 
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em 1.5em;
+	background-color: #d9452d;
+}
+
+.hamburger {
+	display: none;
+}
+
+.bar {
+	display: block;
+	width: 25px;
+	height: 3px;
+	margin: 5px auto;
+	-webkit-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	background-color: #101010;
+}
+
+.nav-menu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-item {
+	margin-left: 5em;
+}
+
+.nav-link {
+	font-size: 1.6em;
+	font-weight: 500;
+	color: #ffbb00;
+}
+
+.nav-link:hover {
+	filter: brightness(120%);
+}
+
+.nav-logo {
+	font-size: 2em;
+	font-weight: 500;
+	color: black;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #ffbb00;
+	font-size: large;
+	font-weight: bold;
+}
+
 h1,
 h2,
 h3 {
@@ -29,13 +88,6 @@ h3 {
 	margin: 2em 0;
 }
 
-ul {
-	list-style-type: none;
-	display: flex;
-	justify-content: space-around;
-	padding: 1em;
-	background: #a60202;
-}
 main {
 	display: flex;
 	flex-direction: column;
@@ -188,8 +240,8 @@ section:hover {
 	margin-left: 0.5em;
 	border-radius: 0.5em;
 	font-weight: bold;
-	color: #ffbb00;
-	background-color: #a60202;
+	color: white;
+	background-color: #d9452d;
 	cursor: pointer;
 }
 
@@ -423,11 +475,44 @@ td {
 	}
 }
 
-a {
-	text-decoration: none;
-	color: #ffbb00;
-	font-size: large;
-	font-weight: bold;
+@media only screen and (max-width: 768px) {
+	.nav-menu {
+		position: fixed;
+		left: -100%;
+		top: 5em;
+		flex-direction: column;
+		background-color: #d9452d;
+		width: 100%;
+		border-radius: 10px;
+		text-align: center;
+		transition: 0.3s;
+		box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+	}
+
+	.nav-menu.active {
+		left: 0;
+	}
+
+	.nav-item {
+		margin: 1em 0;
+	}
+
+	.hamburger {
+		display: block;
+		cursor: pointer;
+	}
+
+	.hamburger.active .bar:nth-child(2) {
+		opacity: 0;
+	}
+
+	.hamburger.active .bar:nth-child(1) {
+		transform: translateY(8px) rotate(45deg);
+	}
+
+	.hamburger.active .bar:nth-child(3) {
+		transform: translateY(-8px) rotate(-45deg);
+	}
 }
 
 footer {

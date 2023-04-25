@@ -1,23 +1,48 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 const Navbar = () => {
+	const [isActive, setIsActive] = useState(false);
 	return (
-		<nav>
-			<ul>
-				<li>
-					<Link to={'/'}>Home</Link>
+		<nav className="navbar">
+			<a href="https://enterwell.net/" className="nav-logo">
+				Enterwell
+			</a>
+			<ul className={`${isActive ? 'nav-menu active' : 'nav-menu'}`}>
+				<li className="nav-item">
+					<Link
+						onClick={() => setIsActive(false)}
+						className="nav-link"
+						to={'/'}
+					>
+						Home
+					</Link>
 				</li>
-				<li>
-					<Link to={'/quizzes'}>Quizzes</Link>
+				<li className="nav-item">
+					<Link
+						onClick={() => setIsActive(false)}
+						className="nav-link"
+						to={'/quizzes'}
+					>
+						Quizzes
+					</Link>
 				</li>
-				<li>
-					<Link to={'/questions'}>Questions</Link>
+				<li className="nav-item">
+					<Link
+						onClick={() => setIsActive(false)}
+						className="nav-link"
+						to={'/questions'}
+					>
+						Questions
+					</Link>
 				</li>
 			</ul>
-			<div class="hamburger">
-				<span class="bar"></span>
-				<span class="bar"></span>
-				<span class="bar"></span>
+			<div
+				onClick={() => setIsActive(!isActive)}
+				className={`${isActive ? 'hamburger active' : 'hamburger'}`}
+			>
+				<span className="bar"></span>
+				<span className="bar"></span>
+				<span className="bar"></span>
 			</div>
 		</nav>
 	);
