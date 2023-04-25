@@ -59,7 +59,7 @@ const useQuizzes = () => {
 			});
 			return res.status === 200;
 		} catch (error) {
-			console.log(error.message);
+			return { error: error.message };
 		}
 	};
 

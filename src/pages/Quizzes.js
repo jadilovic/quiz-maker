@@ -12,6 +12,7 @@ const Quizzes = () => {
 	const [quizId, setQuizId] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const [deleteError, setDeleteError] = useState(null);
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -22,7 +23,7 @@ const Quizzes = () => {
 	const getQuizzesFromServer = async () => {
 		const quizzesFromServer = await database.getQuizzes();
 		if (quizzesFromServer.error) {
-			setError(`Server error: ${quizzesFromServer.error}`);
+			setError(`Error: ${quizzesFromServer.error}`);
 			return;
 		}
 		setQuizzes(quizzesFromServer);
@@ -37,12 +38,12 @@ const Quizzes = () => {
 	const handleConfirmedDelete = async () => {
 		setIsLoading(true);
 		const isDeleted = await database.deleteQuiz(quizId);
-		if (isDeleted) {
+		if (!isDeleted.error) {
 			setQuizzes(quizzes.filter((quiz) => quiz.id !== quizId));
-			setIsModalOpen(false);
 		} else {
-			alert('Error Deleting This Quiz');
+			setDeleteError(`Error Deleting Quiz: ${isDeleted.error}`);
 		}
+		setIsModalOpen(false);
 		setIsLoading(false);
 	};
 
@@ -64,10 +65,12 @@ const Quizzes = () => {
 
 	console.log(quizzes);
 	console.log(error);
+	console.log(deleteError);
 
 	return (
 		<main>
 			<h1 className="page-heading">List of Quizzes</h1>
+			{deleteError && <h3>{deleteError}</h3>}
 			<div className="quizzes-container">
 				<button
 					onClick={() => navigate('/create-quiz')}
