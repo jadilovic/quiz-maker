@@ -56,6 +56,7 @@ const EditQuiz = () => {
 
 	useEffect(() => {
 		getQuestionsFromServer();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [quiz]);
 
 	useEffect(() => {
@@ -75,7 +76,7 @@ const EditQuiz = () => {
 	if (Object.keys(quiz).length < 1) return <h1>Loading...</h1>;
 	return (
 		<main style={{ paddingBottom: '4em' }}>
-			<h1 className="edit-heading">Edit Quiz - {quiz.name}</h1>
+			<h1 className="page-heading">Edit Quiz - {quiz.name}</h1>
 			<QuizNameInput
 				quizName={editedQuizName}
 				setQuizName={setEditedQuizName}
@@ -85,7 +86,7 @@ const EditQuiz = () => {
 			/>
 			<QuizQuestions quiz={quiz} updateQuizInDatabase={updateQuizInDatabase} />
 			{!showQuestionAndAnswerInput && !showQuestionsSelection ? (
-				<div>
+				<div className="edit-btns">
 					<button
 						className="question-btn"
 						onClick={() => setShowQuestionAndAnswerInput(true)}

@@ -50,7 +50,7 @@ const QuestionsSelection = ({
 					</li>
 				))}
 			</ul>
-			<div className="q-a-input-btns">
+			<div style={{ padding: '0 1em' }} className="q-a-input-btns">
 				<button className="create-btn" onClick={handleSelectedQuestions}>
 					Add selected questions
 				</button>

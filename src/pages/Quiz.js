@@ -58,13 +58,17 @@ const Quiz = () => {
 					</button>
 				</div>
 			) : (
-				<div style={{ padding: '1em' }} {...handlers}>
+				<div className="slide-container" {...handlers}>
 					<QuestionSlide question={quiz.questions[currentSlide]} />
 					<div className="slides-navigation">
-						<button className="question-btn" onClick={previousSlide}>
+						<button
+							id="previous"
+							className="question-btn"
+							onClick={previousSlide}
+						>
 							Previous
 						</button>
-						<button className="question-btn" onClick={nextSlide}>
+						<button id="next" className="question-btn" onClick={nextSlide}>
 							Next
 						</button>
 					</div>

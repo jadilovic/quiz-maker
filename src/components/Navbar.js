@@ -14,6 +14,11 @@ const Navbar = () => {
 					<Link to={'/questions'}>Questions</Link>
 				</li>
 			</ul>
+			<div class="hamburger">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</div>
 		</nav>
 	);
 };

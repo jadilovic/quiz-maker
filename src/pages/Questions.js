@@ -13,15 +13,16 @@ const Questions = () => {
 
 	useEffect(() => {
 		getQuestionsFromDatabase();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	if (isLoading) return <h2>Loading...</h2>;
+	if (isLoading) return <h2 className="notification">Loading...</h2>;
 
 	return questions.length < 1 ? (
-		<h2>No questions in the database</h2>
+		<h2 className="notification">No questions in the database</h2>
 	) : (
 		<main className="questions-list">
-			<h1 style={{ margin: '1em 0' }}>List of Questions</h1>
+			<h1 className="page-heading">List of Questions</h1>
 			{questions.map((question) => {
 				return (
 					<div key={question.id} className="question-card">
