@@ -221,6 +221,10 @@ li label {
 	margin: 0;
 }
 
+input[type='checkbox'] {
+	cursor: pointer;
+}
+
 textarea {
 	height: 5em;
 }

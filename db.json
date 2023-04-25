@@ -1,115 +1,86 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
   "quizzes": [
     {
-      "id": 22,
-      "name": "fdsfsdf",
-      "questions": []
-    },
-    {
-      "id": 23,
-      "name": "dfdsfsf",
-      "questions": []
-    },
-    {
-      "id": 25,
-      "name": "dfsfsdf",
-      "questions": []
-    },
-    {
-      "id": 27,
-      "name": "dfssfsfd",
-      "questions": []
-    },
-    {
-      "id": 28,
-      "name": "dfdssf",
-      "questions": []
-    },
-    {
-      "id": 29,
-      "name": "fdfsd",
-      "questions": []
-    },
-    {
-      "id": 30,
-      "name": "ddffdsds",
-      "questions": []
-    },
-    {
-      "id": 31,
-      "name": "dfdsf",
-      "questions": []
-    },
-    {
-      "id": 32,
-      "name": "gfddg",
-      "questions": []
-    },
-    {
-      "id": 33,
-      "name": "fdfsdf",
-      "questions": []
-    },
-    {
-      "id": 34,
-      "name": "jjjj",
+      "id": 1,
+      "name": "React.js Basics",
       "questions": [
         {
-          "id": 17,
-          "question": "hjkhkjh",
-          "answer": "hhjk"
+          "id": 2,
+          "question": "What is React?",
+          "answer": "React is a widely used JavaScript library that was launched in 2011. It was created by developers at Facebook, and it is primarily used for frontend development. React uses the component-based approach, which ensures to help you build components that possess high reusability."
         },
         {
-          "id": 10,
-          "question": "vcxvx",
-          "answer": "vdxvxc"
-        }
-      ]
-    },
-    {
-      "id": 35,
-      "name": "bvbcb",
-      "questions": [
+          "id": 3,
+          "question": "What is the meaning of Virtual DOM?",
+          "answer": "A virtual DOM is a simple JavaScript object that is the exact copy of the corresponding real DOM. It can be considered as a node tree that consists of elements, their attributes, and other properties. Using the render function in React, it creates a node tree and updates it based on the changes that occur in the data model. These changes are usually triggered by users or the actions caused by the system."
+        },
+        {
+          "id": 4,
+          "question": "What is the meaning of JSX?",
+          "answer": "JSX is the abbreviation of JavaScript XML. It is a file that is used in React to bring out the essence of JavaScript to React and use it for its advantages. It even includes bringing out HTML and the easy syntax of JavaScript. This ensures that the resulting HTML file will have high readability, thereby relatively increasing the performance of the application."
+        },
+        {
+          "id": 5,
+          "question": "Can browsers read a JSX file?",
+          "answer": "No, browsers cannot read JSX files directly. It can only read the objects provided by JavaScript. Now, to make a browser read a JSX file, it has to be transformed to a JavaScript object using JSX transformers, and only then it can be fed into the browser for further use in the pipeline."
+        },
+        {
+          "id": 6,
+          "question": "What is the meaning of the component-based architecture of React?",
+          "answer": "In React, components are foundations used to build user interfaces for applications. With the component-based system in place, all of the individual entities become completely reusable and independent of each other. This means that rendering the application is easy and not dependent on the other components of the UI."
+        },
+        {
+          "id": 7,
+          "question": "What are states in React?",
+          "answer": "States form to be one of the vital aspects of React. It is considered as a source of data or objects that control aspects such as component behavior and rendering. In React, states are used to easily create dynamic and interactive components."
+        },
         {
           "id": 8,
-          "question": "starac question 2",
-          "answer": "starac answer 2"
+          "question": "What are props in React?",
+          "answer": "Props are the shorthand name given to properties in React. Props are read-only components that are immutable in nature. In an application, props follow a hierarchy that is passed down from parents to child components. However, the reverse is not supported. This is done to ensure that there is only a single directional flow in data at all times."
         },
         {
           "id": 9,
-          "question": "vvxvcxv",
-          "answer": "vcvxcv"
-        },
-        {
-          "id": 10,
-          "question": "vcxvx",
-          "answer": "vdxvxc"
+          "question": "What is the use of an arrow function in React?",
+          "answer": "An arrow function is used to write an expression in React. It allows users to manually bind components easily. The functionality of arrow functions can be very useful when you are working with higher-order functions particularly."
         }
       ]
     },
     {
-      "id": 36,
-      "name": "bcbc",
+      "id": 2,
+      "name": "React Advanced",
       "questions": [
         {
-          "id": 11,
-          "question": "vccvcx",
-          "answer": "vvcvcxvc"
+          "id": 10,
+          "question": "What are React Fragments used for?",
+          "answer": "React fragments are a special feature in React that let you write group children elements or components without creating an actual node in the DOM."
         },
+        {
+          "id": 11,
+          "question": "What is a ref? How do you use it?",
+          "answer": "A ref is a reference to a DOM element in React. Refs are created with the help of the useRef hook and can be immediately placed in a variable. This variable is then passed to a given React element (not a component) to get a reference to the underlying DOM element (that is, div, span, and so on). The element itself and its properties are now available on the .current property of the ref."
+        },
+        {
+          "id": 6,
+          "question": "What is the meaning of the component-based architecture of React?",
+          "answer": "In React, components are foundations used to build user interfaces for applications. With the component-based system in place, all of the individual entities become completely reusable and independent of each other. This means that rendering the application is easy and not dependent on the other components of the UI."
+        },
+        {
+          "id": 7,
+          "question": "What are states in React?",
+          "answer": "States form to be one of the vital aspects of React. It is considered as a source of data or objects that control aspects such as component behavior and rendering. In React, states are used to easily create dynamic and interactive components."
+        },
+        {
+          "id": 8,
+          "question": "What are props in React?",
+          "answer": "Props are the shorthand name given to properties in React. Props are read-only components that are immutable in nature. In an application, props follow a hierarchy that is passed down from parents to child components. However, the reverse is not supported. This is done to ensure that there is only a single directional flow in data at all times."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "React 101",
+      "questions": [
         {
           "id": 1,
           "question": "Who was the English mathematician and writer widely considered as the worldq's first computer programmer for her work on Charles Babbage's proposed mechanical general-purpose computer, the Analytical Engine?",
@@ -117,99 +88,74 @@
         },
         {
           "id": 2,
-          "question": "Test Question 2",
-          "answer": "Test Answer 2"
+          "question": "What is React?",
+          "answer": "React is a widely used JavaScript library that was launched in 2011. It was created by developers at Facebook, and it is primarily used for frontend development. React uses the component-based approach, which ensures to help you build components that possess high reusability."
         },
         {
           "id": 3,
-          "question": "your name",
-          "answer": "aki"
-        },
-        {
-          "id": 4,
-          "question": "your last name",
-          "answer": "adilovic"
-        },
-        {
-          "id": 5,
-          "question": "your town",
-          "answer": "bihac"
+          "question": "What is the meaning of Virtual DOM?",
+          "answer": "A virtual DOM is a simple JavaScript object that is the exact copy of the corresponding real DOM. It can be considered as a node tree that consists of elements, their attributes, and other properties. Using the render function in React, it creates a node tree and updates it based on the changes that occur in the data model. These changes are usually triggered by users or the actions caused by the system."
         },
         {
           "id": 6,
-          "question": "boby",
-          "answer": "boy"
-        },
-        {
-          "id": 7,
-          "question": "starac question 1",
-          "answer": "starac answer 1"
+          "question": "What is the meaning of the component-based architecture of React?",
+          "answer": "In React, components are foundations used to build user interfaces for applications. With the component-based system in place, all of the individual entities become completely reusable and independent of each other. This means that rendering the application is easy and not dependent on the other components of the UI."
         },
         {
           "id": 8,
-          "question": "starac question 2",
-          "answer": "starac answer 2"
+          "question": "What are props in React?",
+          "answer": "Props are the shorthand name given to properties in React. Props are read-only components that are immutable in nature. In an application, props follow a hierarchy that is passed down from parents to child components. However, the reverse is not supported. This is done to ensure that there is only a single directional flow in data at all times."
         },
         {
           "id": 9,
-          "question": "vvxvcxv",
-          "answer": "vcvxcv"
+          "question": "What is the use of an arrow function in React?",
+          "answer": "An arrow function is used to write an expression in React. It allows users to manually bind components easily. The functionality of arrow functions can be very useful when you are working with higher-order functions particularly."
         },
         {
           "id": 10,
-          "question": "vcxvx",
-          "answer": "vdxvxc"
+          "question": "What are React Fragments used for?",
+          "answer": "React fragments are a special feature in React that let you write group children elements or components without creating an actual node in the DOM."
         },
         {
-          "id": 12,
-          "question": "vcxvxcv",
-          "answer": "cvcvcx"
-        },
-        {
-          "id": 13,
-          "question": "cxvcxv",
-          "answer": "vcxvx"
-        },
-        {
-          "id": 14,
-          "question": "cxcxvxc",
-          "answer": "vxcvxcv"
-        },
-        {
-          "id": 15,
-          "question": "v cv cxv",
-          "answer": "vcxvxcvxc"
+          "id": 11,
+          "question": "What is a ref? How do you use it?",
+          "answer": "A ref is a reference to a DOM element in React. Refs are created with the help of the useRef hook and can be immediately placed in a variable. This variable is then passed to a given React element (not a component) to get a reference to the underlying DOM element (that is, div, span, and so on). The element itself and its properties are now available on the .current property of the ref."
         }
       ]
     },
     {
-      "id": 37,
-      "name": "gfd",
-      "questions": []
-    },
-    {
-      "id": 38,
-      "name": "fgd",
+      "id": 4,
+      "name": "React Tutorial",
       "questions": [
         {
-          "id": 18,
-          "question": "gfdfs",
-          "answer": "gfd"
+          "id": 6,
+          "question": "What is the meaning of the component-based architecture of React?",
+          "answer": "In React, components are foundations used to build user interfaces for applications. With the component-based system in place, all of the individual entities become completely reusable and independent of each other. This means that rendering the application is easy and not dependent on the other components of the UI."
         },
         {
-          "id": 12,
-          "question": "vcxvxcv",
-          "answer": "cvcvcx"
+          "id": 7,
+          "question": "What are states in React?",
+          "answer": "States form to be one of the vital aspects of React. It is considered as a source of data or objects that control aspects such as component behavior and rendering. In React, states are used to easily create dynamic and interactive components."
         },
         {
-          "id": 13,
-          "question": "cxvcxv",
-          "answer": "vcxvx"
+          "id": 8,
+          "question": "What are props in React?",
+          "answer": "Props are the shorthand name given to properties in React. Props are read-only components that are immutable in nature. In an application, props follow a hierarchy that is passed down from parents to child components. However, the reverse is not supported. This is done to ensure that there is only a single directional flow in data at all times."
         },
         {
-          "id": 14,
-          "question": "cxcxvxc",
-          "answer": "vxcvxcv"
+          "id": 9,
+          "question": "What is the use of an arrow function in React?",
+          "answer": "An arrow function is used to write an expression in React. It allows users to manually bind components easily. The functionality of arrow functions can be very useful when you are working with higher-order functions particularly."
+        },
+        {
+          "id": 10,
+          "question": "What are React Fragments used for?",
+          "answer": "React fragments are a special feature in React that let you write group children elements or components without creating an actual node in the DOM."
+        },
+        {
+          "id": 11,
+          "question": "What is a ref? How do you use it?",
+          "answer": "A ref is a reference to a DOM element in React. Refs are created with the help of the useRef hook and can be immediately placed in a variable. This variable is then passed to a given React element (not a component) to get a reference to the underlying DOM element (that is, div, span, and so on). The element itself and its properties are now available on the .current property of the ref."
         }
       ]
     }
@@ -222,91 +168,53 @@
     },
     {
       "id": 2,
-      "question": "Test Question 2",
-      "answer": "Test Answer 2"
+      "question": "What is React?",
+      "answer": "React is a widely used JavaScript library that was launched in 2011. It was created by developers at Facebook, and it is primarily used for frontend development. React uses the component-based approach, which ensures to help you build components that possess high reusability."
     },
     {
       "id": 3,
-      "question": "your name",
-      "answer": "aki"
+      "question": "What is the meaning of Virtual DOM?",
+      "answer": "A virtual DOM is a simple JavaScript object that is the exact copy of the corresponding real DOM. It can be considered as a node tree that consists of elements, their attributes, and other properties. Using the render function in React, it creates a node tree and updates it based on the changes that occur in the data model. These changes are usually triggered by users or the actions caused by the system."
     },
     {
       "id": 4,
-      "question": "your last name",
-      "answer": "adilovic"
+      "question": "What is the meaning of JSX?",
+      "answer": "JSX is the abbreviation of JavaScript XML. It is a file that is used in React to bring out the essence of JavaScript to React and use it for its advantages. It even includes bringing out HTML and the easy syntax of JavaScript. This ensures that the resulting HTML file will have high readability, thereby relatively increasing the performance of the application."
     },
     {
       "id": 5,
-      "question": "your town",
-      "answer": "bihac"
+      "question": "Can browsers read a JSX file?",
+      "answer": "No, browsers cannot read JSX files directly. It can only read the objects provided by JavaScript. Now, to make a browser read a JSX file, it has to be transformed to a JavaScript object using JSX transformers, and only then it can be fed into the browser for further use in the pipeline."
     },
     {
       "id": 6,
-      "question": "boby",
-      "answer": "boy"
+      "question": "What is the meaning of the component-based architecture of React?",
+      "answer": "In React, components are foundations used to build user interfaces for applications. With the component-based system in place, all of the individual entities become completely reusable and independent of each other. This means that rendering the application is easy and not dependent on the other components of the UI."
     },
     {
       "id": 7,
-      "question": "starac question 1",
-      "answer": "starac answer 1"
+      "question": "What are states in React?",
+      "answer": "States form to be one of the vital aspects of React. It is considered as a source of data or objects that control aspects such as component behavior and rendering. In React, states are used to easily create dynamic and interactive components."
     },
     {
       "id": 8,
-      "question": "starac question 2",
-      "answer": "starac answer 2"
+      "question": "What are props in React?",
+      "answer": "Props are the shorthand name given to properties in React. Props are read-only components that are immutable in nature. In an application, props follow a hierarchy that is passed down from parents to child components. However, the reverse is not supported. This is done to ensure that there is only a single directional flow in data at all times."
     },
     {
       "id": 9,
-      "question": "vvxvcxv",
-      "answer": "vcvxcv"
+      "question": "What is the use of an arrow function in React?",
+      "answer": "An arrow function is used to write an expression in React. It allows users to manually bind components easily. The functionality of arrow functions can be very useful when you are working with higher-order functions particularly."
     },
     {
       "id": 10,
-      "question": "vcxvx",
-      "answer": "vdxvxc"
+      "question": "What are React Fragments used for?",
+      "answer": "React fragments are a special feature in React that let you write group children elements or components without creating an actual node in the DOM."
     },
     {
       "id": 11,
-      "question": "vccvcx",
-      "answer": "vvcvcxvc"
-    },
-    {
-      "id": 12,
-      "question": "vcxvxcv",
-      "answer": "cvcvcx"
-    },
-    {
-      "id": 13,
-      "question": "cxvcxv",
-      "answer": "vcxvx"
-    },
-    {
-      "id": 14,
-      "question": "cxcxvxc",
-      "answer": "vxcvxcv"
-    },
-    {
-      "id": 15,
-      "question": "v cv cxv",
-      "answer": "vcxvxcvxc"
-    },
-    {
-      "id": 16,
-      "question": "tgrgfd",
-      "answer": "fdgdfgdf"
-    },
-    {
-      "id": 17,
-      "question": "hjkhkjh",
-      "answer": "hhjk"
-    },
-    {
-      "id": 18,
-      "question": "gfdfs",
-      "answer": "gfd"
+      "question": "What is a ref? How do you use it?",
+      "answer": "A ref is a reference to a DOM element in React. Refs are created with the help of the useRef hook and can be immediately placed in a variable. This variable is then passed to a given React element (not a component) to get a reference to the underlying DOM element (that is, div, span, and so on). The element itself and its properties are now available on the .current property of the ref."
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

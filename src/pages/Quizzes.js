@@ -10,8 +10,10 @@ const Quizzes = () => {
 	const [quizzes, setQuizzes] = useState([]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [quizId, setQuizId] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
+		setIsLoading(true);
 		getQuizzesFromServer();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -19,6 +21,7 @@ const Quizzes = () => {
 	const getQuizzesFromServer = async () => {
 		const quizzesFromServer = await database.getQuizzes();
 		setQuizzes(quizzesFromServer);
+		setIsLoading(false);
 	};
 
 	const handleEdit = (e, id) => {
@@ -28,6 +31,7 @@ const Quizzes = () => {
 	};
 
 	const handleConfirmedDelete = async () => {
+		setIsLoading(true);
 		const isDeleted = await database.deleteQuiz(quizId);
 		if (isDeleted) {
 			setQuizzes(quizzes.filter((quiz) => quiz.id !== quizId));
@@ -35,6 +39,7 @@ const Quizzes = () => {
 		} else {
 			alert('Error Deleting This Quiz');
 		}
+		setIsLoading(false);
 		console.log(`Delete button clicked for id ${quizId}`);
 	};
 
@@ -47,6 +52,8 @@ const Quizzes = () => {
 	const startQuiz = (quizId) => {
 		navigate(`/quizzes/${quizId}`);
 	};
+
+	if (isLoading) return <h2 style={{ margin: '2em 0' }}>Loading...</h2>;
 
 	if (quizzes.length < 1)
 		return (
