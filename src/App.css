@@ -256,10 +256,16 @@ section:hover {
 
 .p-question::before {
 	content: 'Q: ';
+	font-weight: bold;
+}
+
+.p-answer {
+	padding: 0.2em 0 0.4em 0;
 }
 
 .p-answer::before {
 	content: 'A: ';
+	font-weight: bold;
 }
 
 li label {
@@ -301,21 +307,29 @@ textarea {
 	height: 5em;
 }
 
-tr {
-	cursor: pointer;
+table {
+	width: 100%;
+	max-width: 40em;
+	padding: 0 1em;
+	margin: 2em 1em 4em 1em;
+	border-collapse: collapse;
+	border: none;
 }
 
-td {
-	width: 50%;
+tr {
+	cursor: pointer;
 }
 
 th {
 	color: #ffbb00;
 	font-size: 1.2em;
 }
+
 td {
+	width: 50%;
 	color: black;
 	font-weight: bold;
+	border: none;
 }
 
 .slide-container {
@@ -375,7 +389,7 @@ td {
 	max-width: 50em;
 	display: flex;
 	flex-direction: column;
-	align-items: start;
+	align-items: flex-start;
 	border: 2px solid lightgray;
 	border-radius: 1em;
 	padding: 1em;
@@ -384,6 +398,7 @@ td {
 
 .delete-modal {
 	display: none;
+	width: 100%;
 	z-index: 1;
 	background-color: #ffbb00;
 	position: fixed;

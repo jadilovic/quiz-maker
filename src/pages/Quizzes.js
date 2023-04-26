@@ -78,14 +78,7 @@ const Quizzes = () => {
 				>
 					Make New Quiz
 				</button>
-				<table
-					style={{
-						width: '100%',
-						maxWidth: '40em',
-						padding: '0 1em',
-						margin: '2em 0 4em 0',
-					}}
-				>
+				<table>
 					<thead>
 						<tr>
 							<th>Name</th>
