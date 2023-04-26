@@ -17,7 +17,6 @@ const useQuizzes = () => {
 		try {
 			const res = await fetch(`${mockAPI}/quizzes/${quizId}`);
 			const data = await res.json();
-			console.log(data);
 			return data;
 		} catch (error) {
 			return { error: `${error.message} quiz` };
@@ -49,11 +48,9 @@ const useQuizzes = () => {
 				},
 				body: JSON.stringify(quizToUpdate),
 			});
-			console.log(res);
 			const data = await res.json();
 			return data;
 		} catch (error) {
-			console.log(error.message);
 			return { error: `${error.message} to update quiz` };
 		}
 	};

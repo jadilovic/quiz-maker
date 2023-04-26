@@ -25,7 +25,6 @@ const QuestionsSelection = ({
 		const selectedQuestions = serverQuestions.filter((question) =>
 			selectedQuestionsIds.includes(question.id)
 		);
-		console.log(quiz);
 		quiz.questions = [...quiz.questions, ...selectedQuestions];
 		updateQuizOnServer(quiz);
 		setShowQuestionsSelection(false);

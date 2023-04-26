@@ -34,7 +34,7 @@ const EditQuiz = () => {
 			const availableQuestionIds = questionsFromServer.map((item) => item.id);
 			const includedQuestionIds = quiz.questions?.map((item) => item.id);
 			const questionIdsToDisplay = availableQuestionIds.filter(
-				(avlQue) => !includedQuestionIds?.includes(avlQue)
+				(questionId) => !includedQuestionIds?.includes(questionId)
 			);
 			const questionsToDisplay = questionsFromServer.filter((question) => {
 				return questionIdsToDisplay.includes(question.id);
@@ -92,8 +92,6 @@ const EditQuiz = () => {
 		quiz.name = editedQuizName;
 		updateQuizOnServer(quiz);
 	};
-
-	console.log(errors);
 
 	if (isLoading) return <h2 className="notification">Loading...</h2>;
 	return (
@@ -156,4 +154,5 @@ const EditQuiz = () => {
 		</main>
 	);
 };
+
 export default EditQuiz;

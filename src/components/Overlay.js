@@ -7,4 +7,5 @@ const Overlay = ({ isModalOpen, setIsModalOpen }) => {
 		></div>
 	);
 };
+
 export default Overlay;

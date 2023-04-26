@@ -21,4 +21,5 @@ const QuizNameInput = ({
 		</form>
 	);
 };
+
 export default QuizNameInput;

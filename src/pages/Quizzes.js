@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useQuizzes from '../utils/useQuizzes';
 import DeleteModal from '../components/DeleteModal';
 import Overlay from '../components/Overlay';
+import QuizzesTable from '../components/QuizzesTable';
 
 const Quizzes = () => {
 	const navigate = useNavigate();
@@ -11,8 +12,7 @@ const Quizzes = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [quizId, setQuizId] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(null);
-	const [deleteError, setDeleteError] = useState(null);
+	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -23,7 +23,7 @@ const Quizzes = () => {
 	const getQuizzesFromServer = async () => {
 		const quizzesFromServer = await database.getQuizzes();
 		if (quizzesFromServer.error) {
-			setError(`Error: ${quizzesFromServer.error}`);
+			setErrors([...errors, quizzesFromServer.error]);
 		} else {
 			setQuizzes(quizzesFromServer);
 		}
@@ -38,11 +38,10 @@ const Quizzes = () => {
 	const handleConfirmedDelete = async () => {
 		setIsLoading(true);
 		const isDeleted = await database.deleteQuiz(quizId);
-		console.log(isDeleted);
-		if (!isDeleted.error && isDeleted) {
+		if (isDeleted) {
 			setQuizzes(quizzes.filter((quiz) => quiz.id !== quizId));
 		} else {
-			setDeleteError('Error Deleting Quiz');
+			setErrors([...errors, isDeleted.error]);
 		}
 		setIsModalOpen(false);
 		setIsLoading(false);
@@ -58,7 +57,7 @@ const Quizzes = () => {
 		navigate(`/quizzes/${quizId}`);
 	};
 
-	const makeQuizReactElement = () => {
+	const makeQuizButton = () => {
 		return (
 			<button onClick={() => navigate('/create-quiz')} className="question-btn">
 				Make New Quiz
@@ -66,70 +65,45 @@ const Quizzes = () => {
 		);
 	};
 
+	if (isLoading)
+		return (
+			<>
+				<h1 className="page-heading">Quizzes</h1>
+				{isLoading && <h2 className="notification">Loading...</h2>}
+			</>
+		);
 	return (
 		<main>
 			<h1 className="page-heading">Quizzes</h1>
-			{isLoading && <h2 className="notification">Loading...</h2>}
-			{error && <h3 className="error-notification">{error}</h3>}
-			{deleteError && <h3 className="error-notification">{deleteError}</h3>}
-			{quizzes.length < 1 ? (
-				<>
-					<h2 className="notification">No quizzes have been created yet!</h2>
-					{makeQuizReactElement()}
-				</>
+			{errors.length > 0 ? (
+				errors.map((error, index) => {
+					return (
+						<h3 key={index} className="error-notification">
+							{error}
+						</h3>
+					);
+				})
 			) : (
-				<div className="quizzes-container">
-					{makeQuizReactElement()}
-					<table>
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-							{quizzes.map((item, index) => (
-								<tr
-									style={{
-										backgroundColor: `${
-											index % 2 ? 'rgb(180, 179, 179)' : 'lightgrey'
-										}`,
-									}}
-									key={item.id}
-									onClick={() => startQuiz(item.id)}
-								>
-									<td>{item.name}</td>
-									<td>
-										<button
-											className="create-btn"
-											style={{
-												minWidth: '5em',
-												margin: '0.3em',
-												height: '2.5em',
-												width: '40%',
-											}}
-											onClick={(e) => handleEdit(e, item.id)}
-										>
-											Edit
-										</button>
-										<button
-											className="remove-button"
-											style={{
-												minWidth: '5em',
-												margin: '0.3em',
-												height: '2.5em',
-												width: '40%',
-											}}
-											onClick={(e) => handleDelete(e, item.id)}
-										>
-											Delete
-										</button>
-									</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				</div>
+				<>
+					{quizzes.length < 1 ? (
+						<>
+							<h2 className="notification">
+								No quizzes have been created yet!
+							</h2>
+							{makeQuizButton()}
+						</>
+					) : (
+						<div className="quizzes-container">
+							{makeQuizButton()}
+							<QuizzesTable
+								quizzes={quizzes}
+								startQuiz={startQuiz}
+								handleEdit={handleEdit}
+								handleDelete={handleDelete}
+							/>
+						</div>
+					)}
+				</>
 			)}
 			<DeleteModal
 				isModalOpen={isModalOpen}
@@ -140,4 +114,5 @@ const Quizzes = () => {
 		</main>
 	);
 };
+
 export default Quizzes;

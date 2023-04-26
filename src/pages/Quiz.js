@@ -9,17 +9,24 @@ const Quiz = () => {
 	const navigate = useNavigate();
 	const database = useQuizzes();
 	const [quiz, setQuiz] = useState({});
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState(null);
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const handlers = useSwipeable({
-		onSwiped: (eventData) => console.log('User Swiped!', eventData),
 		onSwipedLeft: () => nextSlide(),
 		onSwipedRight: () => previousSlide(),
 	});
 
 	const getQuizFromServer = async (quizId) => {
 		const quizFromServer = await database.getQuiz(quizId);
-		if (Object.keys(quizFromServer).length < 1) navigate('/');
-		setQuiz(quizFromServer);
+		if (Object.keys(quizFromServer).length < 1) {
+			navigate('/');
+		} else if (quizFromServer.error) {
+			setError(quizFromServer.error);
+		} else {
+			setQuiz(quizFromServer);
+		}
+		setIsLoading(false);
 	};
 
 	useEffect(() => {
@@ -27,52 +34,77 @@ const Quiz = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	function nextSlide() {
+	const nextSlide = () => {
 		if (currentSlide === quiz.questions.length - 1) {
 			setCurrentSlide(0);
 		} else {
 			setCurrentSlide(currentSlide + 1);
 		}
-	}
+	};
 
-	function previousSlide() {
+	const previousSlide = () => {
 		if (currentSlide === 0) {
 			setCurrentSlide(quiz.questions.length - 1);
 		} else {
 			setCurrentSlide(currentSlide - 1);
 		}
-	}
+	};
 
-	if (Object.keys(quiz).length < 1) return <h1>Loading...</h1>;
+	const pageHeading = (quizName = 'Page') => {
+		return <h1 style={{ margin: '1em 0' }}>{`Solving Quiz: ${quizName}`}</h1>;
+	};
+
 	return (
 		<main>
-			<h1 style={{ margin: '1em 0' }}>Solving Quiz: {quiz.name}</h1>
-			{quiz.questions.length < 1 ? (
-				<div className>
-					<h2>No questions added to the quiz</h2>
-					<button
-						className="question-btn"
-						onClick={() => navigate(`/edit-quiz/${quiz.id}`)}
-					>
-						Add Questions
-					</button>
-				</div>
+			{isLoading ? (
+				<>
+					{pageHeading()}
+					<h2 className="notification">Loading...</h2>
+				</>
 			) : (
-				<div className="slide-container" {...handlers}>
-					<QuestionSlide question={quiz.questions[currentSlide]} />
-					<div className="slides-navigation">
-						<button
-							id="previous"
-							className="question-btn"
-							onClick={previousSlide}
-						>
-							Previous
-						</button>
-						<button id="next" className="question-btn" onClick={nextSlide}>
-							Next
-						</button>
-					</div>
-				</div>
+				<>
+					{error ? (
+						<>
+							{pageHeading()}
+							<h3 className="error-notification">{error}</h3>
+						</>
+					) : (
+						<>
+							{pageHeading(quiz.name)}
+							{quiz.questions.length < 1 ? (
+								<>
+									<h2>No questions added to the quiz</h2>
+									<button
+										className="question-btn"
+										onClick={() => navigate(`/edit-quiz/${quiz.id}`)}
+									>
+										Add Questions
+									</button>
+								</>
+							) : (
+								<div className="slide-container" {...handlers}>
+									<QuestionSlide question={quiz.questions[currentSlide]} />
+									<div className="slides-navigation">
+										<button
+											id="previous"
+											className="question-btn"
+											onClick={previousSlide}
+										>
+											Previous
+										</button>
+										<button
+											id="next"
+											className="question-btn"
+											onClick={nextSlide}
+										>
+											Next
+										</button>
+									</div>
+								</div>
+							)}
+						</>
+					)}
+				</>
 			)}
 		</main>
 	);

@@ -61,20 +61,26 @@ const CreateQuiz = () => {
 		addNewQuizToDatabase(newQuiz);
 	};
 
-	console.log(isLoading);
-
 	return (
 		<main className="create-quiz">
-			{isLoading && <h2 className="notification">Loading...</h2>}
-			{error && <h3 className="error-notification">{error}</h3>}
-			<h1>Create Quiz</h1>
-			<QuizNameInput
-				quizName={newQuizName}
-				setQuizName={setNewQuizName}
-				handleSubmit={handleSubmit}
-				actionName="Create Quiz"
-				formName="create-form"
-			/>
+			<h1 style={{ margin: '1em 0' }}>Create Quiz</h1>
+			{isLoading ? (
+				<h2 className="notification">Loading...</h2>
+			) : (
+				<>
+					{error ? (
+						<h3 className="error-notification">{error}</h3>
+					) : (
+						<QuizNameInput
+							quizName={newQuizName}
+							setQuizName={setNewQuizName}
+							handleSubmit={handleSubmit}
+							actionName="Create Quiz"
+							formName="create-form"
+						/>
+					)}
+				</>
+			)}
 		</main>
 	);
 };
