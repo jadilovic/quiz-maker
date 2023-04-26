@@ -7,15 +7,23 @@ const CreateQuiz = () => {
 	const database = useQuizzes();
 	const [newQuizName, setNewQuizName] = useState('');
 	const [quizzes, setQuizzes] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
+		setIsLoading(true);
 		getQuizzesFromServer();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [quizzes]);
+	}, []);
 
 	const getQuizzesFromServer = async () => {
 		const quizzesFromServer = await database.getQuizzes();
-		setQuizzes(quizzesFromServer);
+		if (quizzesFromServer.error) {
+			setError(`Error: ${quizzesFromServer.error}`);
+		} else {
+			setQuizzes(quizzesFromServer);
+		}
+		setIsLoading(false);
 	};
 
 	const defineNewId = () => {
@@ -27,9 +35,14 @@ const CreateQuiz = () => {
 	};
 
 	const addNewQuizToDatabase = async (quiz) => {
+		setIsLoading(true);
 		const addedQuiz = await database.createQuiz(quiz);
-		console.log(addedQuiz);
-		if (addedQuiz) navigate(`/edit-quiz/${addedQuiz.id}`);
+		if (addedQuiz.error) {
+			setError(addedQuiz.error);
+		} else {
+			navigate(`/edit-quiz/${addedQuiz.id}`);
+		}
+		setIsLoading(false);
 	};
 
 	const handleSubmit = (e) => {
@@ -44,11 +57,16 @@ const CreateQuiz = () => {
 			name: newQuizName,
 			questions: [],
 		};
+		setError(null);
 		addNewQuizToDatabase(newQuiz);
 	};
 
+	console.log(isLoading);
+
 	return (
 		<main className="create-quiz">
+			{isLoading && <h2 className="notification">Loading...</h2>}
+			{error && <h3 className="error-notification">{error}</h3>}
 			<h1>Create Quiz</h1>
 			<QuizNameInput
 				quizName={newQuizName}

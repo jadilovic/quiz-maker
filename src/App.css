@@ -88,6 +88,15 @@ h3 {
 	margin: 2em 0;
 }
 
+.error-notification {
+	color: white;
+	background-color: #d9452d;
+	width: 86%;
+	line-height: 2em;
+	border-radius: 0.3em;
+	margin: 1em 0;
+}
+
 main {
 	display: flex;
 	flex-direction: column;

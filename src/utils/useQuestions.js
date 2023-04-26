@@ -9,7 +9,7 @@ const useQuestions = () => {
 			const data = await res.json();
 			return data;
 		} catch (error) {
-			console.log(error.message);
+			return { error: `${error.message} questions` };
 		}
 	};
 
@@ -25,7 +25,7 @@ const useQuestions = () => {
 			const data = await res.json();
 			return data;
 		} catch (error) {
-			console.log(error.message);
+			return { error: `${error.message} to create new question` };
 		}
 	};
 

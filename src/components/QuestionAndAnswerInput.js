@@ -3,8 +3,10 @@ import useQuestions from '../utils/useQuestions';
 
 const QuestionAndAnswerInput = ({
 	quiz,
-	updateQuizInDatabase,
+	updateQuizOnServer,
 	setShowQuestionAndAnswerInput,
+	errors,
+	setErrors,
 }) => {
 	const database = useQuestions();
 	const [question, setQuestion] = useState('');
@@ -20,10 +22,12 @@ const QuestionAndAnswerInput = ({
 
 	const defineNewQuestionId = async () => {
 		const serverQuestions = await database.getQuestions();
-		if (serverQuestions.length < 1) {
-			return 1;
+		if (serverQuestions.error) {
+			setErrors([...errors, serverQuestions.error]);
 		} else {
-			return serverQuestions[serverQuestions.length - 1].id + 1;
+			return serverQuestions.length < 1
+				? 1
+				: serverQuestions[serverQuestions.length - 1].id + 1;
 		}
 	};
 
@@ -31,8 +35,12 @@ const QuestionAndAnswerInput = ({
 		const questionFromDatabase = await database.createQuestion(
 			newQuestionAndAnswer
 		);
-		quiz.questions.push(questionFromDatabase);
-		updateQuizInDatabase(quiz);
+		if (questionFromDatabase.error) {
+			setErrors([...errors, questionFromDatabase.error]);
+		} else {
+			quiz.questions.push(questionFromDatabase);
+			updateQuizOnServer(quiz);
+		}
 	};
 
 	const handleCreateQuestionAndAnswer = async (e) => {

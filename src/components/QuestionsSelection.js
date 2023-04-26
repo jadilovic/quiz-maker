@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const QuestionsSelection = ({
 	quiz,
-	updateQuizInDatabase,
+	updateQuizOnServer,
 	serverQuestions,
 	setShowQuestionsSelection,
 }) => {
@@ -27,7 +27,7 @@ const QuestionsSelection = ({
 		);
 		console.log(quiz);
 		quiz.questions = [...quiz.questions, ...selectedQuestions];
-		updateQuizInDatabase(quiz);
+		updateQuizOnServer(quiz);
 		setShowQuestionsSelection(false);
 	};
 
@@ -64,4 +64,5 @@ const QuestionsSelection = ({
 		</>
 	);
 };
+
 export default QuestionsSelection;

@@ -3,17 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import RemoveModal from './RemoveModal';
 import Overlay from './Overlay';
 
-const QuizQuestions = ({ quiz, updateQuizInDatabase }) => {
+const QuizQuestions = ({ quiz, updateQuizOnServer }) => {
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [questionId, setQuestionId] = useState(null);
 
-	const handleConfirmedRemove = async () => {
+	const handleConfirmedRemove = () => {
 		const updatedQuestions = quiz.questions.filter(
 			(question) => question.id !== questionId
 		);
 		quiz.questions = updatedQuestions;
-		updateQuizInDatabase(quiz);
+		updateQuizOnServer(quiz);
 		setIsModalOpen(false);
 	};
 

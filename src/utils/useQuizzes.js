@@ -9,7 +9,7 @@ const useQuizzes = () => {
 			const data = await res.json();
 			return data;
 		} catch (error) {
-			return { error: error.message };
+			return { error: `${error.message} quizzes` };
 		}
 	};
 
@@ -17,9 +17,10 @@ const useQuizzes = () => {
 		try {
 			const res = await fetch(`${mockAPI}/quizzes/${quizId}`);
 			const data = await res.json();
+			console.log(data);
 			return data;
 		} catch (error) {
-			console.log(error.message);
+			return { error: `${error.message} quiz` };
 		}
 	};
 
@@ -35,21 +36,26 @@ const useQuizzes = () => {
 			const data = await res.json();
 			return data;
 		} catch (error) {
-			console.log(error.message);
+			return { error: `${error.message} to create new quiz` };
 		}
 	};
 
 	const updateQuiz = async (quizToUpdate) => {
-		const res = await fetch(`${mockAPI}/quizzes/${quizToUpdate.id}`, {
-			method: 'PUT',
-			headers: {
-				'Content-type': 'application/json',
-			},
-			body: JSON.stringify(quizToUpdate),
-		});
-
-		const data = await res.json();
-		return data;
+		try {
+			const res = await fetch(`${mockAPI}/quizzes/${quizToUpdate.id}`, {
+				method: 'PUT',
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify(quizToUpdate),
+			});
+			console.log(res);
+			const data = await res.json();
+			return data;
+		} catch (error) {
+			console.log(error.message);
+			return { error: `${error.message} to update quiz` };
+		}
 	};
 
 	const deleteQuiz = async (id) => {
@@ -59,7 +65,7 @@ const useQuizzes = () => {
 			});
 			return res.status === 200;
 		} catch (error) {
-			return { error: error.message };
+			return { error: `${error.message} to delete quiz` };
 		}
 	};
 

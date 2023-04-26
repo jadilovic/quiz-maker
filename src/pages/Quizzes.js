@@ -24,9 +24,9 @@ const Quizzes = () => {
 		const quizzesFromServer = await database.getQuizzes();
 		if (quizzesFromServer.error) {
 			setError(`Error: ${quizzesFromServer.error}`);
-			return;
+		} else {
+			setQuizzes(quizzesFromServer);
 		}
-		setQuizzes(quizzesFromServer);
 		setIsLoading(false);
 	};
 
@@ -38,10 +38,11 @@ const Quizzes = () => {
 	const handleConfirmedDelete = async () => {
 		setIsLoading(true);
 		const isDeleted = await database.deleteQuiz(quizId);
-		if (!isDeleted.error) {
+		console.log(isDeleted);
+		if (!isDeleted.error && isDeleted) {
 			setQuizzes(quizzes.filter((quiz) => quiz.id !== quizId));
 		} else {
-			setDeleteError(`Error Deleting Quiz: ${isDeleted.error}`);
+			setDeleteError('Error Deleting Quiz');
 		}
 		setIsModalOpen(false);
 		setIsLoading(false);
@@ -57,77 +58,79 @@ const Quizzes = () => {
 		navigate(`/quizzes/${quizId}`);
 	};
 
-	if (error) return <h2 className="notification">{error}</h2>;
-	if (isLoading) return <h2 className="notification">Loading...</h2>;
-
-	if (quizzes.length < 1)
-		return <h2 className="notification">No quizzes have been created yet!</h2>;
-
-	console.log(quizzes);
-	console.log(error);
-	console.log(deleteError);
+	const makeQuizReactElement = () => {
+		return (
+			<button onClick={() => navigate('/create-quiz')} className="question-btn">
+				Make New Quiz
+			</button>
+		);
+	};
 
 	return (
 		<main>
-			<h1 className="page-heading">List of Quizzes</h1>
-			{deleteError && <h3>{deleteError}</h3>}
-			<div className="quizzes-container">
-				<button
-					onClick={() => navigate('/create-quiz')}
-					className="question-btn"
-				>
-					Make New Quiz
-				</button>
-				<table>
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						{quizzes.map((item, index) => (
-							<tr
-								style={{
-									backgroundColor: `${
-										index % 2 ? 'rgb(180, 179, 179)' : 'lightgrey'
-									}`,
-								}}
-								key={item.id}
-								onClick={() => startQuiz(item.id)}
-							>
-								<td>{item.name}</td>
-								<td>
-									<button
-										className="create-btn"
-										style={{
-											minWidth: '5em',
-											margin: '0.3em',
-											height: '2.5em',
-											width: '40%',
-										}}
-										onClick={(e) => handleEdit(e, item.id)}
-									>
-										Edit
-									</button>
-									<button
-										className="remove-button"
-										style={{
-											minWidth: '5em',
-											margin: '0.3em',
-											height: '2.5em',
-											width: '40%',
-										}}
-										onClick={(e) => handleDelete(e, item.id)}
-									>
-										Delete
-									</button>
-								</td>
+			<h1 className="page-heading">Quizzes</h1>
+			{isLoading && <h2 className="notification">Loading...</h2>}
+			{error && <h3 className="error-notification">{error}</h3>}
+			{deleteError && <h3 className="error-notification">{deleteError}</h3>}
+			{quizzes.length < 1 ? (
+				<>
+					<h2 className="notification">No quizzes have been created yet!</h2>
+					{makeQuizReactElement()}
+				</>
+			) : (
+				<div className="quizzes-container">
+					{makeQuizReactElement()}
+					<table>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Actions</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
-			</div>
+						</thead>
+						<tbody>
+							{quizzes.map((item, index) => (
+								<tr
+									style={{
+										backgroundColor: `${
+											index % 2 ? 'rgb(180, 179, 179)' : 'lightgrey'
+										}`,
+									}}
+									key={item.id}
+									onClick={() => startQuiz(item.id)}
+								>
+									<td>{item.name}</td>
+									<td>
+										<button
+											className="create-btn"
+											style={{
+												minWidth: '5em',
+												margin: '0.3em',
+												height: '2.5em',
+												width: '40%',
+											}}
+											onClick={(e) => handleEdit(e, item.id)}
+										>
+											Edit
+										</button>
+										<button
+											className="remove-button"
+											style={{
+												minWidth: '5em',
+												margin: '0.3em',
+												height: '2.5em',
+												width: '40%',
+											}}
+											onClick={(e) => handleDelete(e, item.id)}
+										>
+											Delete
+										</button>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			)}
 			<DeleteModal
 				isModalOpen={isModalOpen}
 				setIsModalOpen={setIsModalOpen}
