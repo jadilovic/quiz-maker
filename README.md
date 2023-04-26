@@ -1,17 +1,18 @@
 # Getting Started with Quiz Maker App Locally
 
 To run the app locally:
-`npm start` and `npm run server` to start JSON Mock Server
+`npm start` and `npm run server` to start JSON Mock Server. -
 Change mock server path in `useQuestions` and `useQuizzes` hooks to `LOCAL_JSON_SERVER`
 
 # Deployed Quiz Maker App
 
 Quiz Maker client side was deployed on Netlify: https://ja-quiz-maker.netlify.app/
-JSON Server backend side was deployed on Render: https://quiz-server-vlwu.onrender.com/
+
+- JSON Server backend side was deployed on Render: https://quiz-server-vlwu.onrender.com/
 
 # GitHub
 
-Quiz Maker Client: https://github.com/jadilovic/quiz-maker
+Quiz Maker Client: https://github.com/jadilovic/quiz-maker -
 Quiz Maker Mock JSON Server: https://github.com/jadilovic/quiz-server
 
 ## Available Scripts
