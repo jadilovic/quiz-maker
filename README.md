@@ -6,14 +6,25 @@ Change mock server path in `useQuestions` and `useQuizzes` hooks to `LOCAL_JSON_
 
 # Deployed Quiz Maker App
 
-Quiz Maker client side was deployed on Netlify: https://ja-quiz-maker.netlify.app/
+Quiz Maker client side was deployed on Netlify: https://ja-quiz-maker.netlify.app/ - since it is deployed on Render free tier loading time for the first fetch request is about one minute.
 
 - JSON Server backend side was deployed on Render: https://quiz-server-vlwu.onrender.com/
 
 # GitHub
 
-Quiz Maker Client: https://github.com/jadilovic/quiz-maker -
+Quiz Maker Client, including JSON Server (local): https://github.com/jadilovic/quiz-maker -
 Quiz Maker Mock JSON Server: https://github.com/jadilovic/quiz-server
+
+# Use
+
+The App lets you create quizzes, add questions with answers to quizzes, solve quizzes, perform all CRUD operations and review quizzes and questions.
+
+## Technologies Used
+
+This project was bootstrapped with Create React App
+Quizzes and questions are stored on JSON Server locally or JSON Server deployed on Render.
+React Swipeable is used for Quiz Slides
+Styling is done with CSS
 
 ## Available Scripts
 
