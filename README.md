@@ -6,7 +6,7 @@ Change mock server path in `useQuestions` and `useQuizzes` hooks to `LOCAL_JSON_
 
 # Deployed Quiz Maker App
 
-Quiz Maker client side was deployed on Netlify: https://ja-quiz-maker.netlify.app/ - since it is deployed on Render free tier loading time for the first fetch request is about one minute.
+Quiz Maker client side was deployed on Netlify: https://ja-quiz-maker.netlify.app/ - since JSON Server to witch fetch requests are made is deployed on Render free tier loading time for the first fetch request from client is about one minute.
 
 - JSON Server backend side was deployed on Render: https://quiz-server-vlwu.onrender.com/
 
