@@ -1,10 +1,22 @@
-const QuizNameInput = ({
-	quizName,
-	setQuizName,
-	handleSubmit,
-	actionName,
-	formName,
-}) => {
+import React, { useState, useEffect } from 'react';
+
+const QuizNameInput = ({ quiz, updateQuizOnServer, actionName, formName }) => {
+	const [editedQuizName, setEditedQuizName] = useState('');
+
+	useEffect(() => {
+		setEditedQuizName(quiz.name);
+	}, [quiz]);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (!editedQuizName) {
+			alert('Please add quiz name');
+			return;
+		}
+		quiz.name = editedQuizName;
+		updateQuizOnServer(quiz);
+	};
+
 	return (
 		<form className={formName} onSubmit={handleSubmit}>
 			<div className="form-control">
@@ -12,8 +24,8 @@ const QuizNameInput = ({
 				<input
 					type="text"
 					placeholder="Enter new quiz name"
-					value={quizName}
-					onChange={(e) => setQuizName(e.target.value)}
+					value={editedQuizName}
+					onChange={(e) => setEditedQuizName(e.target.value)}
 				/>
 			</div>
 

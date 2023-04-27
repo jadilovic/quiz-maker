@@ -15,7 +15,6 @@ const EditQuiz = () => {
 	const [quiz, setQuiz] = useState({});
 	const [isLoading, setIsLoading] = useState(true);
 	const [errors, setErrors] = useState([]);
-	const [editedQuizName, setEditedQuizName] = useState('');
 	const [serverQuestions, setServerQuestions] = useState([]);
 	const [showQuestionAndAnswerInput, setShowQuestionAndAnswerInput] =
 		useState(false);
@@ -52,7 +51,6 @@ const EditQuiz = () => {
 			setErrors([...errors, quizFromServer.error]);
 		} else {
 			setQuiz(quizFromServer);
-			setEditedQuizName(quizFromServer.name);
 		}
 		setIsLoading(false);
 	};
@@ -83,16 +81,6 @@ const EditQuiz = () => {
 		scrollToBottom();
 	}, [showQuestionAndAnswerInput, showQuestionsSelection]);
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (!editedQuizName) {
-			alert('Please add quiz name');
-			return;
-		}
-		quiz.name = editedQuizName;
-		updateQuizOnServer(quiz);
-	};
-
 	if (isLoading) return <h2 className="notification">Loading...</h2>;
 	return (
 		<main style={{ paddingBottom: '4em' }}>
@@ -108,9 +96,8 @@ const EditQuiz = () => {
 			) : (
 				<>
 					<QuizNameInput
-						quizName={editedQuizName}
-						setQuizName={setEditedQuizName}
-						handleSubmit={handleSubmit}
+						quiz={quiz}
+						updateQuizOnServer={updateQuizOnServer}
 						actionName="Edit Quiz Name"
 						formName="edit-form"
 					/>
