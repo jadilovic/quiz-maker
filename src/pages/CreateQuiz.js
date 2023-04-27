@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useQuizzes from '../utils/useQuizzes';
-import QuizNameInput from '../components/QuizNameInput';
+import CreateQuizInput from '../components/CreateQuizInput';
 const CreateQuiz = () => {
 	const navigate = useNavigate();
 	const database = useQuizzes();
@@ -71,7 +71,7 @@ const CreateQuiz = () => {
 					{error ? (
 						<h3 className="error-notification">{error}</h3>
 					) : (
-						<QuizNameInput
+						<CreateQuizInput
 							quizName={newQuizName}
 							setQuizName={setNewQuizName}
 							handleSubmit={handleSubmit}

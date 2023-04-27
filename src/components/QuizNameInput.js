@@ -4,7 +4,7 @@ const QuizNameInput = ({ quiz, updateQuizOnServer, actionName, formName }) => {
 	const [editedQuizName, setEditedQuizName] = useState('');
 
 	useEffect(() => {
-		setEditedQuizName(quiz.name);
+		setEditedQuizName(quiz?.name);
 	}, [quiz]);
 
 	const handleSubmit = (e) => {
