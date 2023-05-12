@@ -1,9 +1,11 @@
+import useServer from './useServer';
+
 const useQuizzes = () => {
-	const mockAPI = process.env.REACT_APP_DEPLOYED_JSON_SERVER;
+	const database = useServer();
 
 	const getQuizzes = async () => {
 		try {
-			const res = await fetch(`${mockAPI}/quizzes`);
+			const res = await fetch(`${database.mockAPI}/quizzes`);
 			const data = await res.json();
 			return data;
 		} catch (error) {
@@ -13,7 +15,7 @@ const useQuizzes = () => {
 
 	const getQuiz = async (quizId) => {
 		try {
-			const res = await fetch(`${mockAPI}/quizzes/${quizId}`);
+			const res = await fetch(`${database.mockAPI}/quizzes/${quizId}`);
 			const data = await res.json();
 			return data;
 		} catch (error) {
@@ -23,7 +25,7 @@ const useQuizzes = () => {
 
 	const createQuiz = async (quiz) => {
 		try {
-			const res = await fetch(`${mockAPI}/quizzes`, {
+			const res = await fetch(`${database.mockAPI}/quizzes`, {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -39,13 +41,16 @@ const useQuizzes = () => {
 
 	const updateQuiz = async (quizToUpdate) => {
 		try {
-			const res = await fetch(`${mockAPI}/quizzes/${quizToUpdate.id}`, {
-				method: 'PUT',
-				headers: {
-					'Content-type': 'application/json',
-				},
-				body: JSON.stringify(quizToUpdate),
-			});
+			const res = await fetch(
+				`${database.mockAPI}/quizzes/${quizToUpdate.id}`,
+				{
+					method: 'PUT',
+					headers: {
+						'Content-type': 'application/json',
+					},
+					body: JSON.stringify(quizToUpdate),
+				}
+			);
 			const data = await res.json();
 			return data;
 		} catch (error) {
@@ -55,7 +60,7 @@ const useQuizzes = () => {
 
 	const deleteQuiz = async (id) => {
 		try {
-			const res = await fetch(`${mockAPI}/quizzes/${id}`, {
+			const res = await fetch(`${database.mockAPI}/quizzes/${id}`, {
 				method: 'DELETE',
 			});
 			return res.status === 200;

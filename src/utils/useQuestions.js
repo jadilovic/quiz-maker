@@ -1,9 +1,11 @@
+import useServer from './useServer';
+
 const useQuestions = () => {
-	const mockAPI = process.env.REACT_APP_DEPLOYED_JSON_SERVER;
+	const database = useServer();
 
 	const getQuestions = async () => {
 		try {
-			const res = await fetch(`${mockAPI}/questions`);
+			const res = await fetch(`${database.mockAPI}/questions`);
 			const data = await res.json();
 			return data;
 		} catch (error) {
@@ -13,7 +15,7 @@ const useQuestions = () => {
 
 	const createQuestion = async (question) => {
 		try {
-			const res = await fetch(`${mockAPI}/questions`, {
+			const res = await fetch(`${database.mockAPI}/questions`, {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
