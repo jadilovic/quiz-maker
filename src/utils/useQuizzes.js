@@ -1,7 +1,5 @@
 const useQuizzes = () => {
-	const LOCAL_JSON_SERVER = 'http://localhost:5000';
-	const DEPLOYED_JSON_SERVER = 'https://quiz-server-vlwu.onrender.com';
-	const mockAPI = DEPLOYED_JSON_SERVER;
+	const mockAPI = process.env.REACT_APP_DEPLOYED_JSON_SERVER;
 
 	const getQuizzes = async () => {
 		try {
