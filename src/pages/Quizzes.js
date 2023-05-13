@@ -15,12 +15,12 @@ const Quizzes = () => {
 	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
-		setIsLoading(true);
 		getQuizzesFromServer();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const getQuizzesFromServer = async () => {
+		setIsLoading(true);
 		const quizzesFromServer = await database.getQuizzes();
 		if (quizzesFromServer.error) {
 			setErrors([...errors, quizzesFromServer.error]);

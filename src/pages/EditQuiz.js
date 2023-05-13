@@ -13,13 +13,27 @@ const EditQuiz = () => {
 	const databaseQuizzes = useQuizzes();
 	const databaseQuestions = useQuestions();
 	const [quiz, setQuiz] = useState({});
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 	const [errors, setErrors] = useState([]);
 	const [serverQuestions, setServerQuestions] = useState([]);
 	const [showQuestionAndAnswerInput, setShowQuestionAndAnswerInput] =
 		useState(false);
 	const [showQuestionsSelection, setShowQuestionsSelection] = useState(false);
 	const questionsEndRef = useRef(null);
+
+	useEffect(() => {
+		getQuizFromServer(id);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	useEffect(() => {
+		getQuestionsFromServer();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [quiz]);
+
+	useEffect(() => {
+		scrollToBottom();
+	}, [showQuestionAndAnswerInput, showQuestionsSelection]);
 
 	const scrollToBottom = () => {
 		questionsEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -44,42 +58,31 @@ const EditQuiz = () => {
 	};
 
 	const getQuizFromServer = async (quizId) => {
+		setIsLoading(true);
 		const quizFromServer = await databaseQuizzes.getQuiz(quizId);
 		if (Object.keys(quizFromServer).length < 1) {
 			navigate('/');
 		} else if (quizFromServer.error) {
 			setErrors([...errors, quizFromServer.error]);
+			setIsLoading(false);
 		} else {
 			setQuiz(quizFromServer);
 		}
-		setIsLoading(false);
 	};
 
 	const updateQuizOnServer = async (updatedQuiz) => {
+		setIsLoading(true);
 		const updatedQuizOnTheServer = await databaseQuizzes.updateQuiz(
 			updatedQuiz
 		);
 		if (updatedQuizOnTheServer.error) {
 			setErrors([...errors, updatedQuizOnTheServer.error]);
+			setIsLoading(false);
 		} else {
-			getQuizFromServer(updatedQuizOnTheServer.id);
+			// getQuizFromServer(updatedQuizOnTheServer.id);
+			setQuiz(updatedQuizOnTheServer);
 		}
 	};
-
-	useEffect(() => {
-		setIsLoading(true);
-		getQuizFromServer(id);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	useEffect(() => {
-		getQuestionsFromServer();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [quiz]);
-
-	useEffect(() => {
-		scrollToBottom();
-	}, [showQuestionAndAnswerInput, showQuestionsSelection]);
 
 	if (isLoading) return <h2 className="notification">Loading...</h2>;
 	return (

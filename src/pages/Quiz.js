@@ -17,6 +17,11 @@ const Quiz = () => {
 		onSwipedRight: () => previousSlide(),
 	});
 
+	useEffect(() => {
+		getQuizFromServer(id);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const getQuizFromServer = async (quizId) => {
 		const quizFromServer = await database.getQuiz(quizId);
 		if (Object.keys(quizFromServer).length < 1) {
@@ -28,11 +33,6 @@ const Quiz = () => {
 		}
 		setIsLoading(false);
 	};
-
-	useEffect(() => {
-		getQuizFromServer(id);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
 
 	const nextSlide = () => {
 		if (currentSlide === quiz.questions.length - 1) {

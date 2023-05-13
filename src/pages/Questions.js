@@ -4,24 +4,24 @@ import useQuestions from '../utils/useQuestions';
 const Questions = () => {
 	const database = useQuestions();
 	const [questions, setQuestions] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
-
-	const getQuestionsFromDatabase = async () => {
-		const questionsFromServer = await database.getQuestions();
-		if (questionsFromServer.error) {
-			setError(`Error: ${questionsFromServer.error}`);
-			setIsLoading(false);
-			return;
-		}
-		setQuestions([...questionsFromServer]);
-		setIsLoading(false);
-	};
 
 	useEffect(() => {
 		getQuestionsFromDatabase();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	const getQuestionsFromDatabase = async () => {
+		setIsLoading(true);
+		const questionsFromServer = await database.getQuestions();
+		if (questionsFromServer.error) {
+			setError(`Error: ${questionsFromServer.error}`);
+		} else {
+			setQuestions([...questionsFromServer]);
+		}
+		setIsLoading(false);
+	};
 
 	return (
 		<main className="questions-list">

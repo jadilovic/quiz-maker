@@ -11,12 +11,12 @@ const CreateQuiz = () => {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		setIsLoading(true);
 		getQuizzesFromServer();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const getQuizzesFromServer = async () => {
+		setIsLoading(true);
 		const quizzesFromServer = await database.getQuizzes();
 		if (quizzesFromServer.error) {
 			setError(`Error: ${quizzesFromServer.error}`);
