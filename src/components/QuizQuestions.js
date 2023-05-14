@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import RemoveModal from './RemoveModal';
 import Overlay from './Overlay';
 
-const QuizQuestions = ({ quiz, updateQuizOnServer }) => {
+const QuizQuestions = ({ quiz, updateQuizOnServer, setIsLoading }) => {
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [questionId, setQuestionId] = useState(null);
@@ -13,6 +13,7 @@ const QuizQuestions = ({ quiz, updateQuizOnServer }) => {
 			(question) => question.id !== questionId
 		);
 		quiz.questions = updatedQuestions;
+		setIsLoading(true);
 		updateQuizOnServer(quiz);
 		setIsModalOpen(false);
 	};

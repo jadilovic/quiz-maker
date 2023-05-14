@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const QuestionsSelection = ({
+	setIsLoading,
 	quiz,
 	updateQuizOnServer,
 	serverQuestions,
@@ -26,6 +27,7 @@ const QuestionsSelection = ({
 			selectedQuestionsIds.includes(question.id)
 		);
 		quiz.questions = [...quiz.questions, ...selectedQuestions];
+		setIsLoading(true);
 		updateQuizOnServer(quiz);
 		setShowQuestionsSelection(false);
 	};

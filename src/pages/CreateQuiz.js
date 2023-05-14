@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useQuizzes from '../utils/useQuizzes';
+import useQuizzes from '../hooks/useQuizzes';
 import CreateQuizInput from '../components/CreateQuizInput';
+
 const CreateQuiz = () => {
 	const navigate = useNavigate();
 	const database = useQuizzes();
 	const [newQuizName, setNewQuizName] = useState('');
 	const [quizzes, setQuizzes] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
@@ -84,4 +85,5 @@ const CreateQuiz = () => {
 		</main>
 	);
 };
+
 export default CreateQuiz;

@@ -375,10 +375,16 @@ td {
 }
 
 .question-text,
-.answer-text {
+.answer-text,
+.question-number {
 	text-align: start;
 	color: #ffbb00;
 	margin: 0.5em 0;
+}
+
+.question-number::before {
+	content: 'Number: ';
+	font-weight: bold;
 }
 
 .question-text::before {

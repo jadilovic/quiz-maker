@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
-import useQuizzes from '../utils/useQuizzes';
+import useQuizzes from '../hooks/useQuizzes';
 import QuestionSlide from '../components/QuestionSlide';
 
 const Quiz = () => {
@@ -83,7 +83,10 @@ const Quiz = () => {
 								</>
 							) : (
 								<div className="slide-container" {...handlers}>
-									<QuestionSlide question={quiz.questions[currentSlide]} />
+									<QuestionSlide
+										question={quiz.questions[currentSlide]}
+										questionNumber={currentSlide + 1}
+									/>
 									<div className="slides-navigation">
 										<button
 											id="previous"
@@ -109,4 +112,5 @@ const Quiz = () => {
 		</main>
 	);
 };
+
 export default Quiz;

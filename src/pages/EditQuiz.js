@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import useQuizzes from '../utils/useQuizzes';
-import useQuestions from '../utils/useQuestions';
-import QuizNameInput from '../components/QuizNameInput';
+import useQuizzes from '../hooks/useQuizzes';
+import useQuestions from '../hooks/useQuestions';
+import EditQuizNameInput from '../components/EditQuizNameInput';
 import QuestionsSelection from '../components/QuestionsSelection';
 import QuizQuestions from '../components/QuizQuestions';
 import QuestionAndAnswerInput from '../components/QuestionAndAnswerInput';
@@ -13,7 +13,7 @@ const EditQuiz = () => {
 	const databaseQuizzes = useQuizzes();
 	const databaseQuestions = useQuestions();
 	const [quiz, setQuiz] = useState({});
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const [errors, setErrors] = useState([]);
 	const [serverQuestions, setServerQuestions] = useState([]);
 	const [showQuestionAndAnswerInput, setShowQuestionAndAnswerInput] =
@@ -71,7 +71,6 @@ const EditQuiz = () => {
 	};
 
 	const updateQuizOnServer = async (updatedQuiz) => {
-		setIsLoading(true);
 		const updatedQuizOnTheServer = await databaseQuizzes.updateQuiz(
 			updatedQuiz
 		);
@@ -98,13 +97,18 @@ const EditQuiz = () => {
 				})
 			) : (
 				<>
-					<QuizNameInput
+					<EditQuizNameInput
+						setIsLoading={setIsLoading}
 						quiz={quiz}
 						updateQuizOnServer={updateQuizOnServer}
 						actionName="Edit Quiz Name"
 						formName="edit-form"
 					/>
-					<QuizQuestions quiz={quiz} updateQuizOnServer={updateQuizOnServer} />
+					<QuizQuestions
+						quiz={quiz}
+						updateQuizOnServer={updateQuizOnServer}
+						setIsLoading={setIsLoading}
+					/>
 					{!showQuestionAndAnswerInput && !showQuestionsSelection ? (
 						<div className="edit-btns">
 							<button
@@ -123,6 +127,7 @@ const EditQuiz = () => {
 					) : null}
 					{showQuestionAndAnswerInput ? (
 						<QuestionAndAnswerInput
+							setIsLoading={setIsLoading}
 							quiz={quiz}
 							updateQuizOnServer={updateQuizOnServer}
 							setShowQuestionAndAnswerInput={setShowQuestionAndAnswerInput}
@@ -132,6 +137,7 @@ const EditQuiz = () => {
 					) : null}
 					{showQuestionsSelection ? (
 						<QuestionsSelection
+							setIsLoading={setIsLoading}
 							quiz={quiz}
 							updateQuizOnServer={updateQuizOnServer}
 							serverQuestions={serverQuestions}

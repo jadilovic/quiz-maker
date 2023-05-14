@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import useQuestions from '../utils/useQuestions';
+import useQuestions from '../hooks/useQuestions';
 
 const Questions = () => {
 	const database = useQuestions();
 	const [questions, setQuestions] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {

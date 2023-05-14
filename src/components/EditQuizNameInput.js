@@ -1,6 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-const QuizNameInput = ({ quiz, updateQuizOnServer, actionName, formName }) => {
+const EditQuizNameInput = ({
+	setIsLoading,
+	quiz,
+	updateQuizOnServer,
+	actionName,
+	formName,
+}) => {
 	const [editedQuizName, setEditedQuizName] = useState('');
 
 	useEffect(() => {
@@ -14,6 +20,7 @@ const QuizNameInput = ({ quiz, updateQuizOnServer, actionName, formName }) => {
 			return;
 		}
 		quiz.name = editedQuizName;
+		setIsLoading(true);
 		updateQuizOnServer(quiz);
 	};
 
@@ -34,4 +41,4 @@ const QuizNameInput = ({ quiz, updateQuizOnServer, actionName, formName }) => {
 	);
 };
 
-export default QuizNameInput;
+export default EditQuizNameInput;

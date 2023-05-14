@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const QuestionSlide = ({ question }) => {
+const QuestionSlide = ({ question, questionNumber }) => {
 	const [showAnswer, setShowAnswer] = useState(false);
 
 	useEffect(() => {
@@ -9,6 +9,7 @@ const QuestionSlide = ({ question }) => {
 
 	return (
 		<div className="question-slide">
+			<h4 className="question-number">{questionNumber}</h4>
 			<p className="question-text">{question.question}</p>
 			<button
 				className="create-btn"

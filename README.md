@@ -9,7 +9,7 @@ Run `npm start` to start Quiz Maker App and `npm run server` to start JSON Mock 
 
 Create .env file with following values:
 REACT_APP_MODE=production
-REACT_APP_DEPLOYED_JSON_SERVER='path to server where JSON Server was deployed'
+REACT_APP_DEPLOYED_JSON_SERVER='path to server where JSON Server was deployed' - for the purpose of this task JSON Server was deployed on https://quiz-server-vlwu.onrender.com/
 
 # Deployed Quiz Maker App
 

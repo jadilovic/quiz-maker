@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import useQuestions from '../utils/useQuestions';
+import { useState } from 'react';
+import useQuestions from '../hooks/useQuestions';
 
 const QuestionAndAnswerInput = ({
+	setIsLoading,
 	quiz,
 	updateQuizOnServer,
 	setShowQuestionAndAnswerInput,
@@ -49,6 +50,7 @@ const QuestionAndAnswerInput = ({
 			alert('Please add question or answer');
 			return;
 		}
+		setIsLoading(true);
 		const newQuestionId = await defineNewQuestionId();
 		const newQuestion = {
 			id: newQuestionId,

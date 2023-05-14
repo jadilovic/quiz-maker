@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useQuizzes from '../utils/useQuizzes';
+import useQuizzes from '../hooks/useQuizzes';
 import DeleteModal from '../components/DeleteModal';
 import Overlay from '../components/Overlay';
 import QuizzesTable from '../components/QuizzesTable';
@@ -11,7 +11,7 @@ const Quizzes = () => {
 	const [quizzes, setQuizzes] = useState([]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [quizId, setQuizId] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
