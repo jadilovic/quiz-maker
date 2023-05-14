@@ -5,7 +5,6 @@ const useQuizzes = () => {
 
 	const getQuizzes = async () => {
 		try {
-			console.log(`${database.mockAPI}/quizzes`);
 			const res = await fetch(`${database.mockAPI}/quizzes`);
 			const data = await res.json();
 			return data;
