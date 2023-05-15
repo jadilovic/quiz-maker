@@ -18,7 +18,8 @@ For the purpose of this task JSON Server was deployed on https://quiz-server-vlw
 
 # Deployed Quiz Maker App
 
-Quiz Maker client side was deployed on Netlify: https://ja-quiz-maker.netlify.app/ - since JSON Server to witch fetch requests are made is deployed on Render free tier loading time for the first fetch request from client is about one minute.
+Quiz Maker client side was deployed on Netlify: https://ja-quiz-maker.netlify.app/  
+Since JSON Server to witch fetch requests are made is deployed on Render free tier loading time for the first fetch request from client is about one minute.
 
 JSON Server backend side was deployed on Render: https://quiz-server-vlwu.onrender.com/
 
