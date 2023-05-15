@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useQuizzes from '../hooks/useQuizzes';
-import DeleteModal from '../components/DeleteModal';
-import Overlay from '../components/Overlay';
-import QuizzesTable from '../components/QuizzesTable';
+import useQuizzes from '../../hooks/useQuizzes';
+import Overlay from '../../components/Overlay';
+import DeleteModal from './DeleteModal';
+import QuizzesTable from './QuizzesTable';
 
 const Quizzes = () => {
 	const navigate = useNavigate();

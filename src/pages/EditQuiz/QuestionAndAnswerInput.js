@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import useQuestions from '../hooks/useQuestions';
+import { PropTypes } from 'prop-types';
+import useQuestions from '../../hooks/useQuestions';
 
 const QuestionAndAnswerInput = ({
 	setIsLoading,
@@ -95,6 +96,15 @@ const QuestionAndAnswerInput = ({
 			</div>
 		</div>
 	);
+};
+
+QuestionAndAnswerInput.propTypes = {
+	setIsLoading: PropTypes.func,
+	quiz: PropTypes.object,
+	updateQuizOnServer: PropTypes.func,
+	setShowQuestionAndAnswerInput: PropTypes.func,
+	errors: PropTypes.array,
+	setErrors: PropTypes.func,
 };
 
 export default QuestionAndAnswerInput;

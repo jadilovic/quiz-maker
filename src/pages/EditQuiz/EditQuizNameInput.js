@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react';
+import { PropTypes } from 'prop-types';
 
-const EditQuizNameInput = ({
-	setIsLoading,
-	quiz,
-	updateQuizOnServer,
-	actionName,
-	formName,
-}) => {
+const EditQuizNameInput = ({ setIsLoading, quiz, updateQuizOnServer }) => {
 	const [editedQuizName, setEditedQuizName] = useState('');
 
 	useEffect(() => {
@@ -25,7 +20,7 @@ const EditQuizNameInput = ({
 	};
 
 	return (
-		<form className={formName} onSubmit={handleSubmit}>
+		<form className="edit-form" onSubmit={handleSubmit}>
 			<div className="form-control">
 				<label>Quiz Name: </label>
 				<input
@@ -36,9 +31,15 @@ const EditQuizNameInput = ({
 				/>
 			</div>
 
-			<input type="submit" value={actionName} className="create-btn" />
+			<input type="submit" value="Edit Quiz Name" className="create-btn" />
 		</form>
 	);
+};
+
+EditQuizNameInput.propTypes = {
+	setIsLoading: PropTypes.func,
+	quiz: PropTypes.object,
+	updateQuizOnServer: PropTypes.func,
 };
 
 export default EditQuizNameInput;

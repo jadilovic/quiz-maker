@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useQuizzes from '../hooks/useQuizzes';
-import CreateQuizInput from '../components/CreateQuizInput';
+import useQuizzes from '../../hooks/useQuizzes';
+import CreateQuizInput from './CreateQuizInput';
 
 const CreateQuiz = () => {
 	const navigate = useNavigate();
@@ -76,8 +76,6 @@ const CreateQuiz = () => {
 							quizName={newQuizName}
 							setQuizName={setNewQuizName}
 							handleSubmit={handleSubmit}
-							actionName="Create Quiz"
-							formName="create-form"
 						/>
 					)}
 				</>

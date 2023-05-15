@@ -374,6 +374,11 @@ td {
 	width: 100%;
 }
 
+#previous:disabled,
+#next:disabled {
+	cursor: not-allowed;
+}
+
 .question-text,
 .answer-text,
 .question-number {
@@ -541,6 +546,13 @@ td {
 	}
 	.hamburger.active .bar:nth-child(3) {
 		transform: translateY(-8px) rotate(-45deg);
+	}
+	.question-answer {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.remove-button {
+		margin: 0.5em 0 1em;
 	}
 }
 

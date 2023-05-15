@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import useQuizzes from '../hooks/useQuizzes';
-import useQuestions from '../hooks/useQuestions';
-import EditQuizNameInput from '../components/EditQuizNameInput';
-import QuestionsSelection from '../components/QuestionsSelection';
-import QuizQuestions from '../components/QuizQuestions';
-import QuestionAndAnswerInput from '../components/QuestionAndAnswerInput';
+import useQuizzes from '../../hooks/useQuizzes';
+import useQuestions from '../../hooks/useQuestions';
+import EditQuizNameInput from './EditQuizNameInput';
+import QuestionsSelection from './QuestionsSelection';
+import QuizQuestions from './QuizQuestions';
+import QuestionAndAnswerInput from './QuestionAndAnswerInput';
 
 const EditQuiz = () => {
 	const { id } = useParams();
@@ -101,8 +101,6 @@ const EditQuiz = () => {
 						setIsLoading={setIsLoading}
 						quiz={quiz}
 						updateQuizOnServer={updateQuizOnServer}
-						actionName="Edit Quiz Name"
-						formName="edit-form"
 					/>
 					<QuizQuestions
 						quiz={quiz}

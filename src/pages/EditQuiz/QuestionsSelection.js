@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { PropTypes } from 'prop-types';
 
 const QuestionsSelection = ({
 	setIsLoading,
@@ -64,6 +65,14 @@ const QuestionsSelection = ({
 			</div>
 		</>
 	);
+};
+
+QuestionsSelection.propTypes = {
+	setIsLoading: PropTypes.func,
+	quiz: PropTypes.object,
+	updateQuizOnServer: PropTypes.func,
+	serverQuestions: PropTypes.array,
+	setShowQuestionsSelection: PropTypes.func,
 };
 
 export default QuestionsSelection;

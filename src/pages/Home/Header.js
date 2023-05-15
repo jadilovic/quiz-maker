@@ -1,4 +1,4 @@
-import logo from '../images/enterwell_logo_icon.png';
+import logo from '../../assets/images/enterwell_logo_icon.png';
 
 const Header = () => {
 	return (

@@ -7,9 +7,16 @@ const NotFound = () => {
 	useEffect(() => {
 		setTimeout(() => {
 			navigate('/');
-		}, 2000);
+		}, 3000);
 	}, [navigate]);
 
-	return <h1>Not Found</h1>;
+	return (
+		<main className="notification">
+			<h1>Not Found</h1>
+			<h2 className="notification">
+				You will be automatically returned to the Home Page.
+			</h2>
+		</main>
+	);
 };
 export default NotFound;

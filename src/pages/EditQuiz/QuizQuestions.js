@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RemoveModal from './RemoveModal';
-import Overlay from './Overlay';
+import Overlay from '../../components/Overlay';
 
 const QuizQuestions = ({ quiz, updateQuizOnServer, setIsLoading }) => {
 	const navigate = useNavigate();

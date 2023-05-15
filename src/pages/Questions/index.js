@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useQuestions from '../hooks/useQuestions';
+import useQuestions from '../../hooks/useQuestions';
 
 const Questions = () => {
 	const database = useQuestions();

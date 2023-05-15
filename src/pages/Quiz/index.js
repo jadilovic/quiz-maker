@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
-import useQuizzes from '../hooks/useQuizzes';
-import QuestionSlide from '../components/QuestionSlide';
+import useQuizzes from '../../hooks/useQuizzes';
+import QuestionSlide from './QuestionSlide';
 
 const Quiz = () => {
 	const { id } = useParams();
@@ -36,7 +36,7 @@ const Quiz = () => {
 
 	const nextSlide = () => {
 		if (currentSlide === quiz.questions.length - 1) {
-			setCurrentSlide(0);
+			return;
 		} else {
 			setCurrentSlide(currentSlide + 1);
 		}
@@ -44,7 +44,7 @@ const Quiz = () => {
 
 	const previousSlide = () => {
 		if (currentSlide === 0) {
-			setCurrentSlide(quiz.questions.length - 1);
+			return;
 		} else {
 			setCurrentSlide(currentSlide - 1);
 		}
@@ -90,6 +90,7 @@ const Quiz = () => {
 									/>
 									<div className="slides-navigation">
 										<button
+											disabled={currentSlide === 0}
 											id="previous"
 											className="question-btn"
 											onClick={previousSlide}
@@ -97,6 +98,7 @@ const Quiz = () => {
 											Previous
 										</button>
 										<button
+											disabled={currentSlide === quiz.questions.length - 1}
 											id="next"
 											className="question-btn"
 											onClick={nextSlide}

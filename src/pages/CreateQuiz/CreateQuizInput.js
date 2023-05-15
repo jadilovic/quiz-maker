@@ -1,12 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const CreateQuizInput = ({
-	quizName,
-	setQuizName,
-	handleSubmit,
-	actionName,
-	formName,
-}) => {
+const CreateQuizInput = ({ quizName, setQuizName, handleSubmit }) => {
 	const inputRef = useRef(null);
 
 	useEffect(() => {
@@ -14,7 +8,7 @@ const CreateQuizInput = ({
 	}, []);
 
 	return (
-		<form className={formName} onSubmit={handleSubmit}>
+		<form className="create-form" onSubmit={handleSubmit}>
 			<div className="form-control">
 				<label>Quiz Name: </label>
 				<input
@@ -26,7 +20,7 @@ const CreateQuizInput = ({
 				/>
 			</div>
 
-			<input type="submit" value={actionName} className="create-btn" />
+			<input type="submit" value="Create Quiz" className="create-btn" />
 		</form>
 	);
 };
