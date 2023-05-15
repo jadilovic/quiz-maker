@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const QuestionSlide = ({ question, questionNumber }) => {
+const QuestionSlide = ({ question, questionNumber, totalQuestions }) => {
 	const [showAnswer, setShowAnswer] = useState(false);
 
 	useEffect(() => {
@@ -9,7 +9,9 @@ const QuestionSlide = ({ question, questionNumber }) => {
 
 	return (
 		<div className="question-slide">
-			<h4 className="question-number">{questionNumber}</h4>
+			<h4 className="question-number">
+				{`${questionNumber} of ${totalQuestions}`}
+			</h4>
 			<p className="question-text">{question.question}</p>
 			<button
 				className="create-btn"

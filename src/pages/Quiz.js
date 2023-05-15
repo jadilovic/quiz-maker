@@ -86,6 +86,7 @@ const Quiz = () => {
 									<QuestionSlide
 										question={quiz.questions[currentSlide]}
 										questionNumber={currentSlide + 1}
+										totalQuestions={quiz.questions.length}
 									/>
 									<div className="slides-navigation">
 										<button
